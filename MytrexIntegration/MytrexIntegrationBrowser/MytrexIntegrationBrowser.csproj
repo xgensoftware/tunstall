@@ -7,7 +7,7 @@
     <ProjectGuid>{1CCC18F1-74DD-478F-A845-E0F999522FB6}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>MytrexIntegrationBrowser</RootNamespace>
-    <AssemblyName>MytrexIntegrationBrowser</AssemblyName>
+    <AssemblyName>MIB</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

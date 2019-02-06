@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,10 +27,16 @@ namespace MytrexIntegrationBrowser
                     var token = JWTHelper.GetToken(secret, username);
                     url = string.Format("{0}?username={1}&phonenumber={2}&dealerkey={3}&token={4}", url, username, phoneNumber, dealerKey,token);
 
-                    //string headers = string.Format("Authorization: 0 {0} \r\n", token); 
-                    using (WebBrowser browser = new WebBrowser())
+                    try
                     {
-                        browser.Navigate(url, "_blank", null,null);
+                        Process.Start("chrome.exe", url);
+                    }
+                    catch {
+
+                        using (WebBrowser browser = new WebBrowser())
+                        {
+                            browser.Navigate(url, "_blank", null, null);
+                        }
                     }
                 }
             }
