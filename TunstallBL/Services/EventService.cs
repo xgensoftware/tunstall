@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
@@ -7,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using TunstallDAL;
 using TunstallBL.Models;
+using TunstallBL.Helpers;
+
 namespace TunstallBL.Services
 {
     public class EventService : BaseService<EventService>, IDisposable
@@ -27,11 +30,16 @@ namespace TunstallBL.Services
 
         #region Public Methods
 
-        public async Task<bool> ProcessEventQueue(int serviceId)
+        public bool ProcessEventQueue(int serviceId)
         {
+            var isDemoMode = ConfigurationManager.AppSettings["IsDemoMode"].Parse<bool>();
+            var logFile = ConfigurationManager.AppSettings["LogFile"];
+            var logger = new LogHelper(logFile);
             bool processEvents = true;
-            var events = await _db.Events.Where(e => e.IsProcessed == false && e.ServiceId == serviceId)
-                                        .ToListAsync();
+
+            logger.LogMessage(LogMessageType.INFO, string.Format("****** Processing events for service id {0} ******", serviceId));
+
+            var events = _db.Events.Where(e => e.IsProcessed == false && e.ServiceId == serviceId).AsParallel().ToList();
 
             var eventModels = events
                                 .Select(e => new EventModel()
@@ -51,11 +59,11 @@ namespace TunstallBL.Services
             try
             {
                 events.ForEach(e => e.IsProcessed = true);
-                await _db.SaveChangesAsync();
+                _db.SaveChanges();
             }
             catch (Exception ex)
             {
-                processEvents = false;
+                logger.LogException(ex);
             }
 
             if(processEvents)
@@ -69,14 +77,17 @@ namespace TunstallBL.Services
                         if(eventMapping != null)
                         {
                             string cmd = string.Format("CallRaiser.exe u:{0};c:{1};p:{2};n:{3}", e.AccountCode, eventMapping.InternalEventCode, e.LineId, e.CallerId);
-                            Process.Start(cmd);
+                            logger.LogMessage(LogMessageType.INFO, cmd);
+
+                            if(!isDemoMode)
+                                Process.Start(cmd);
                         }
                     }
 
                 });
             }
 
-
+            logger.LogMessage(LogMessageType.INFO, string.Format("****** Completed events for service id {0} ******", serviceId));
             return processEvents;
         }
 

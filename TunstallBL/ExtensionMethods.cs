@@ -126,5 +126,77 @@ namespace TunstallBL
             return string.Format("\"{0}\"", item);
         }
         #endregion
+
+        public static T Parse<T>(this object value)
+        {
+            Type outType = typeof(T);
+
+            if (outType == typeof(int))
+            {
+                int tempInt = -1;
+                int.TryParse(value.ToString(), out tempInt);
+                value = tempInt;
+            }
+            else if (outType == typeof(short))
+            {
+                short tempShort = -1;
+                short.TryParse(value.ToString(), out tempShort);
+                value = tempShort;
+            }
+            else if (outType == typeof(long))
+            {
+                long tempLong = -1;
+                long.TryParse(value.ToString(), out tempLong);
+                value = tempLong;
+            }
+            else if (outType == typeof(double))
+            {
+                double tempDouble = 0.0;
+                double.TryParse(value.ToString(), out tempDouble);
+                value = tempDouble;
+            }
+            else if (outType == typeof(decimal))
+            {
+                decimal tempDecimal = 0.0m;
+                decimal.TryParse(value.ToString(), out tempDecimal);
+                value = tempDecimal;
+            }
+            else if (outType == typeof(DateTime))
+            {
+                // We don't want to wrap the convert. If it doesn't work - it will cause an exception
+                value = Convert.ToDateTime(value);
+            }
+            else if (outType == typeof(bool))
+            {
+                bool _tempBool = false;
+                bool.TryParse(value.ToString(), out _tempBool);
+                value = _tempBool;
+            }
+            else if (outType == typeof(string))
+            {
+                if (value == null)
+                    value = string.Empty;
+            }
+            else if (outType == typeof(float))
+            {
+                float tempFloat = 0.0f;
+                float.TryParse(value.ToString(), out tempFloat);
+                value = tempFloat;
+            }
+            else if (outType == typeof(Guid))
+            {
+                try
+                {
+                    Guid newId = Guid.Empty;
+                    Guid.TryParse(value.ToString(), out newId);
+                    value = newId;
+                }
+                catch { value = Guid.Empty; }
+            }
+            else
+                throw new NotImplementedException(string.Format("Type {0}, was not implemented.", outType.ToString()));
+
+            return (T)value;
+        }
     }
 }
