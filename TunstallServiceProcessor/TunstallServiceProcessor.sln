@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TunstallServiceProcessor", "TunstallServiceProcessor.csproj", "{1AA39625-B24A-4CCD-9903-8C1F24A06071}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TunstallBL", "..\TunstallBL\TunstallBL.csproj", "{377DCE29-CF32-4AAA-B10C-7E6024DD9271}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TunstallDAL", "..\TunstallDAL\TunstallDAL.csproj", "{EE49D2E9-98AD-4223-8061-74A05757DB84}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1AA39625-B24A-4CCD-9903-8C1F24A06071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AA39625-B24A-4CCD-9903-8C1F24A06071}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AA39625-B24A-4CCD-9903-8C1F24A06071}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AA39625-B24A-4CCD-9903-8C1F24A06071}.Release|Any CPU.Build.0 = Release|Any CPU
+		{377DCE29-CF32-4AAA-B10C-7E6024DD9271}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{377DCE29-CF32-4AAA-B10C-7E6024DD9271}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{377DCE29-CF32-4AAA-B10C-7E6024DD9271}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{377DCE29-CF32-4AAA-B10C-7E6024DD9271}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE49D2E9-98AD-4223-8061-74A05757DB84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE49D2E9-98AD-4223-8061-74A05757DB84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE49D2E9-98AD-4223-8061-74A05757DB84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE49D2E9-98AD-4223-8061-74A05757DB84}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

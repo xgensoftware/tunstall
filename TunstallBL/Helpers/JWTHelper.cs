@@ -7,7 +7,7 @@ using System.IdentityModel;
 using System.IdentityModel.Tokens;
 using System.Security;
 using System.IdentityModel.Tokens.Jwt;
-namespace TunstallBL
+namespace TunstallBL.Helpers
 {
     public class JWTHelper
     {
