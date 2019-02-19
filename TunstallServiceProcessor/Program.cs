@@ -13,8 +13,7 @@ namespace TunstallServiceProcessor
     {
         static void Main(string[] args)
         {
-            var serviceId = ConfigurationManager.AppSettings["ServiceId"].Parse<int>();
-            EventService.Instance.ProcessEventQueue(serviceId);
+            EventService.Instance.ProcessEventQueue();
         }
     }
 }

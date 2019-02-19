@@ -81,5 +81,8 @@
       <DependentUpon>201902131748225_Add_EventCodeMapping_Table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="SQL\EventCodeMappings.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

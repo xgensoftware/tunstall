@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 namespace TunstallBL.Models
 {
+    public enum External_Service
+    {
+        MYTREX = 1
+    }
+
     public class EventModel
     {
         public EventModel()
@@ -54,5 +59,14 @@ namespace TunstallBL.Models
         public double? Longitude { get; set; }
 
         public string VerificationURL { get; set; }
+
+        public int ServiceId { get; set; }
+
+        public string RawData { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("{0} {1}", AccountCode, CallerId);
+        }
     }
 }

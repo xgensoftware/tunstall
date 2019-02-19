@@ -32,5 +32,14 @@ namespace TunstallBL.Helpers
             var handler = new JwtSecurityTokenHandler();
             return handler.WriteToken(secToken);
         }
+
+        public static JwtSecurityToken DecodeToken(string token)
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var decode = handler.ReadJwtToken(token);
+            return decode;
+            //var username = decode.Payload.First(p => p.Key == "username").Value.ToString();
+            //return username;
+        }
     }
 }

@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Threading.Tasks;
-using MytrexAPI.Models;
+using TunstallBL.Models;
 using TunstallDAL;
 using Newtonsoft.Json;
 
@@ -35,6 +35,7 @@ namespace MytrexAPI.Controllers
                 newEvent.TestMode = model.TestMode;
                 newEvent.UnitModel = model.UnitModel;
                 newEvent.EventTimeStamp = DateTime.Now;
+                newEvent.ServiceId = (int)External_Service.MYTREX;
                 db.Events.Add(newEvent);
                 await db.SaveChangesAsync();
 

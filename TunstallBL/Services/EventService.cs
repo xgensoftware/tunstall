@@ -30,16 +30,16 @@ namespace TunstallBL.Services
 
         #region Public Methods
 
-        public bool ProcessEventQueue(int serviceId)
+        public bool ProcessEventQueue()
         {
             var isDemoMode = ConfigurationManager.AppSettings["IsDemoMode"].Parse<bool>();
             var logFile = ConfigurationManager.AppSettings["LogFile"];
             var logger = new LogHelper(logFile);
             bool processEvents = true;
 
-            logger.LogMessage(LogMessageType.INFO, string.Format("****** Processing events for service id {0} ******", serviceId));
+            logger.LogMessage(LogMessageType.INFO, "****** Processing events ******");
 
-            var events = _db.Events.Where(e => e.IsProcessed == false && e.ServiceId == serviceId).AsParallel().ToList();
+            var events = _db.Events.Where(e => e.IsProcessed == false).AsParallel().ToList();
 
             var eventModels = events
                                 .Select(e => new EventModel()
@@ -51,7 +51,8 @@ namespace TunstallBL.Services
                                     Qualifier = e.Qualifier,
                                     Zone = e.Zone,
                                     LineId = e.LineId,
-                                    UnitModel = e.UnitModel
+                                    UnitModel = e.UnitModel,
+                                    ServiceId = e.ServiceId
                                 })
                                 .ToList();
 
@@ -71,23 +72,30 @@ namespace TunstallBL.Services
                 //call CallRaiser.exe for each transaction
                 Parallel.ForEach(eventModels, e => {
 
-                    using (var db = new TunstallDatabaseContext())
+                    try
                     {
-                        var eventMapping = db.EventCodeMappings.Where(m => m.ExternalEventCode == e.EventCode).FirstOrDefault();
-                        if(eventMapping != null)
+                        var serviceType = (External_Service)e.ServiceId;
+                        using (var db = new TunstallDatabaseContext())
                         {
-                            string cmd = string.Format("CallRaiser.exe u:{0};c:{1};p:{2};n:{3}", e.AccountCode, eventMapping.InternalEventCode, e.LineId, e.CallerId);
-                            logger.LogMessage(LogMessageType.INFO, cmd);
+                            var eventMapping = db.EventCodeMappings.Where(m => m.ExternalEventCode == e.EventCode).FirstOrDefault();
+                            if (eventMapping != null)
+                            {
+                                string cmd = string.Format("CallRaiser.exe u:{0};c:{1};p:{2};n:{3}", e.AccountCode, eventMapping.InternalEventCode, e.LineId, e.CallerId);
+                                logger.LogMessage(LogMessageType.INFO, cmd);
 
-                            if(!isDemoMode)
-                                Process.Start(cmd);
+                                if (!isDemoMode)
+                                    Process.Start(cmd);
+                            }
                         }
                     }
-
+                    catch(Exception ex)
+                    {
+                        string cmd = string.Format("Failed to process event Id {0}, {1}. ERROR:{2} ", e.Id,e.ToString(),ex.Message);
+                    }
                 });
             }
 
-            logger.LogMessage(LogMessageType.INFO, string.Format("****** Completed events for service id {0} ******", serviceId));
+            logger.LogMessage(LogMessageType.INFO, "****** Completed events ******");
             return processEvents;
         }
 
