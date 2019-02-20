@@ -23,5 +23,10 @@ namespace TunstallBL.Models
         {
             get { return ConfigurationManager.AppSettings["MytrexUsername"]; }
         }
+
+        public static bool StripPhoneNumberField
+        {
+            get { return ConfigurationManager.AppSettings["StripPhoneNumberField"].Parse<bool>(); }
+        }
     }
 }

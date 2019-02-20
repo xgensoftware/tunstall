@@ -28,6 +28,7 @@ namespace TunstallBL.Services
         }
 
 
+
         #region Public Methods
 
         public bool ProcessEventQueue()
@@ -80,7 +81,7 @@ namespace TunstallBL.Services
                             var eventMapping = db.EventCodeMappings.Where(m => m.ExternalEventCode == e.EventCode).FirstOrDefault();
                             if (eventMapping != null)
                             {
-                                string cmd = string.Format("CallRaiser.exe u:{0};c:{1};p:{2};n:{3}", e.AccountCode, eventMapping.InternalEventCode, e.LineId, e.CallerId);
+                                string cmd = string.Format("CallRaiser.exe u:{0};c:{1};p:{2};n:{3}", e.AccountCode, eventMapping.InternalEventCode, e.LineId, StripPhoneNumber(e.CallerId));
                                 logger.LogMessage(LogMessageType.INFO, cmd);
 
                                 if (!isDemoMode)
