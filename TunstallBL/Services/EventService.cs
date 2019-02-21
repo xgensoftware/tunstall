@@ -48,7 +48,7 @@ namespace TunstallBL.Services
                                     Id = e.Id,
                                     AccountCode = e.AccountCode,
                                     CallerId = e.CallerId,
-                                    EventCode = e.EventCode,
+                                    EventCode = e.EventZone,
                                     Qualifier = e.Qualifier,
                                     Zone = e.Zone,
                                     LineId = e.LineId,
@@ -71,7 +71,8 @@ namespace TunstallBL.Services
             if(processEvents)
             {
                 //call CallRaiser.exe for each transaction
-                Parallel.ForEach(eventModels, e => {
+                foreach (var e in eventModels)
+                {
 
                     try
                     {
@@ -85,15 +86,27 @@ namespace TunstallBL.Services
                                 logger.LogMessage(LogMessageType.INFO, cmd);
 
                                 if (!isDemoMode)
-                                    Process.Start(cmd);
+                                {
+                                    //C:\PNC4\runs
+                                    var p = new Process();
+                                    p.StartInfo.WorkingDirectory = @"C:\PNC4\runs\";
+                                    p.StartInfo.FileName = @"C:\PNC4\runs\CallRaiser.exe";
+                                    p.StartInfo.Arguments = string.Format("u:{0};c:{1};p:{2};n:{3}", e.AccountCode, eventMapping.InternalEventCode, e.LineId, StripPhoneNumber(e.CallerId));
+                                    p.StartInfo.RedirectStandardOutput = true;
+                                    p.StartInfo.CreateNoWindow = true;
+                                    p.StartInfo.UseShellExecute = false;
+                                    p.Start();
+                                    p.WaitForExit();
+                                    logger.LogMessage(LogMessageType.INFO, string.Format("Call raised to PNC for account {0}, phone: {1}", e.AccountCode, e.CallerId));
+                                }
                             }
                         }
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
-                        string cmd = string.Format("Failed to process event Id {0}, {1}. ERROR:{2} ", e.Id,e.ToString(),ex.Message);
+                        logger.LogMessage(LogMessageType.INFO, string.Format("Failed to process event Id {0}, {1}. ERROR:{2} ", e.Id, e.ToString(), ex.Message));
                     }
-                });
+                }
             }
 
             logger.LogMessage(LogMessageType.INFO, "****** Completed events ******");

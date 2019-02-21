@@ -31,10 +31,11 @@ namespace MytrexAPI.Controllers
                 newEvent.EventCode = model.EventCode;
                 newEvent.Qualifier = model.Qualifier;
                 newEvent.Zone = model.Zone;
-                newEvent.LineId = model.LineId;
+                newEvent.LineId = "C4";
                 newEvent.TestMode = model.TestMode;
                 newEvent.UnitModel = model.UnitModel;
                 newEvent.EventTimeStamp = DateTime.Now;
+                newEvent.EventZone = model.EventCode + model.Zone;
                 newEvent.ServiceId = (int)External_Service.MYTREX;
                 db.Events.Add(newEvent);
                 await db.SaveChangesAsync();

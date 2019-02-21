@@ -59,5 +59,8 @@ namespace TunstallDAL.Entities
         public bool IsProcessed { get; set; }
 
         public int ServiceId { get; set; }
+
+        [StringLength(10)]
+        public string EventZone { get; set; }
     }
 }
