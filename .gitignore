@@ -678,3 +678,5 @@ System.IdentityModel.Tokens.Jwt.xml
 /TestProject/obj/Debug/TestProject.csprojResolveAssemblyReference.cache
 /TestProject/obj/Debug/TestProject.exe
 /TestProject/obj/Debug/TestProject.pdb
+TunstallDAL.Migrations.Alter_Event_EventZone.resources
+TunstallDAL.Migrations.Alter_Event_EventZone.resources
