@@ -7,8 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TunstallBL;
+using TunstallBL.Helpers;
 namespace MytrexIntegrationBrowser
 {
+
     class Program
     {
         [STAThread]
@@ -24,6 +26,10 @@ namespace MytrexIntegrationBrowser
                 if(args.Count() > 0)
                 {
                     string phoneNumber = args[0];
+                    if(phoneNumber.Substring(0,1) != "1")
+                    {
+                        phoneNumber = string.Format("1{0}", phoneNumber);
+                    }
                     var token = JWTHelper.GetToken(secret, username);
                     url = string.Format("{0}?username={1}&phonenumber={2}&dealerkey={3}&token={4}", url, username, phoneNumber, dealerKey,token);
 
