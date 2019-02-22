@@ -5,11 +5,12 @@ namespace TunstallDAL.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<TunstallDAL.TunstallDatabaseContext>
+    public class Configuration : DbMigrationsConfiguration<TunstallDAL.TunstallDatabaseContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            ContextKey = "TunstallDAL.TunstallDatabaseContext ";
         }
 
         protected override void Seed(TunstallDAL.TunstallDatabaseContext context)
