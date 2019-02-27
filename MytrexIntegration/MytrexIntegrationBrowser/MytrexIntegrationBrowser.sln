@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MytrexIntegrationBrowser", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TunstallBL", "..\..\TunstallBL\TunstallBL.csproj", "{377DCE29-CF32-4AAA-B10C-7E6024DD9271}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MytrexIntegrationForm", "..\MytrexIntegrationForm\MytrexIntegrationForm.csproj", "{780AE8EE-EA00-4666-B609-2836925B8BD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{377DCE29-CF32-4AAA-B10C-7E6024DD9271}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{377DCE29-CF32-4AAA-B10C-7E6024DD9271}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{377DCE29-CF32-4AAA-B10C-7E6024DD9271}.Release|Any CPU.Build.0 = Release|Any CPU
+		{780AE8EE-EA00-4666-B609-2836925B8BD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{780AE8EE-EA00-4666-B609-2836925B8BD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{780AE8EE-EA00-4666-B609-2836925B8BD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{780AE8EE-EA00-4666-B609-2836925B8BD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
