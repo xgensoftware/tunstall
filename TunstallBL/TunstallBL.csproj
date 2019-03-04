@@ -71,6 +71,7 @@
     <Compile Include="Helpers\AppConfigurationHelper.cs" />
     <Compile Include="Helpers\JWTHelper.cs" />
     <Compile Include="Helpers\LogHelper.cs" />
+    <Compile Include="Models\AneltoSignalModel.cs" />
     <Compile Include="Models\AppConfiguration.cs" />
     <Compile Include="Models\EventModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

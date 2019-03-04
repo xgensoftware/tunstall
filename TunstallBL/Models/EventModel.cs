@@ -8,7 +8,8 @@ namespace TunstallBL.Models
 {
     public enum External_Service
     {
-        MYTREX = 1
+        MYTREX = 1,
+        ANELTO = 2
     }
 
     public class EventModel
