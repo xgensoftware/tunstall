@@ -24,19 +24,21 @@ namespace TunstallBL.Services
 
         EventService()
         {
-            _log = new LogHelper(AppConfiguration.LogFile);
             _db = new TunstallDatabaseContext();
         }
 
-        
+
+
         #region Public Methods
 
         public bool ProcessEventQueue()
         {
             var isDemoMode = ConfigurationManager.AppSettings["IsDemoMode"].Parse<bool>();
+            var logFile = ConfigurationManager.AppSettings["LogFile"];
+            var logger = new LogHelper(logFile);
             bool processEvents = true;
 
-            LogInfo("****** Processing events ******");
+            logger.LogMessage(LogMessageType.INFO, "****** Processing events ******");
 
             var events = _db.Events.Where(e => e.IsProcessed == false).AsParallel().ToList();
 
@@ -63,64 +65,58 @@ namespace TunstallBL.Services
             }
             catch (Exception ex)
             {
-                LogError(ex);
+                logger.LogException(ex);
+                processEvents = false;
             }
 
             if(processEvents)
             {
-                // push to calls history
+                //call CallRaiser.exe for each transaction
                 foreach (var e in eventModels)
                 {
-
-                    try
+                    int i = 0;
+                    bool result = int.TryParse(e.AccountCode, out i);
+                    if (result)
                     {
-                        var serviceType = (External_Service)e.ServiceId;
-                        using (var db = new TunstallDatabaseContext())
+                        try
                         {
-                            var eventMapping = db.EventCodeMappings.Where(m => m.ExternalEventCode == e.EventCode).FirstOrDefault();
-                            if (eventMapping != null)
+                            using (var db = new TunstallDatabaseContext())
                             {
-                                #region Old
-                                //string cmd = string.Format("CallRaiser.exe u:{0};c:{1};p:{2};n:{3}", e.AccountCode, eventMapping.InternalEventCode, e.LineId, StripPhoneNumber(e.CallerId));
-                                //logger.LogMessage(LogMessageType.INFO, cmd);
-
-                                //if (!isDemoMode)
-                                //{
-                                //    //C:\PNC4\runs
-                                //    var p = new Process();
-                                //    p.StartInfo.WorkingDirectory = @"C:\PNC4\runs\";
-                                //    p.StartInfo.FileName = @"C:\PNC4\runs\CallRaiser.exe";
-                                //    p.StartInfo.Arguments = string.Format("u:{0};c:{1};p:{2};n:{3}", e.AccountCode, eventMapping.InternalEventCode, e.LineId, StripPhoneNumber(e.CallerId));
-                                //    p.StartInfo.RedirectStandardOutput = true;
-                                //    p.StartInfo.CreateNoWindow = true;
-                                //    p.StartInfo.UseShellExecute = false;
-                                //    p.Start();
-                                //    p.WaitForExit();
-                                //    logger.LogMessage(LogMessageType.INFO, string.Format("Call raised to PNC for account {0}, phone: {1}", e.AccountCode, e.CallerId));
-                                //}
-                                #endregion
-
-                                // get the home and first resident
-                                var el = HomeService.Instance.GetHomeByWorkPhone(e.CallerId);
-                                if(el != null)
+                                var eventMapping = db.EventCodeMappings.Where(m => m.ExternalEventCode == e.EventCode).FirstOrDefault();
+                                if (eventMapping != null)
                                 {
+                                    string cmd = string.Format("CallRaiser.exe u:{0};c:{1};p:{2};n:{3}", e.AccountCode, eventMapping.InternalEventCode, e.LineId, StripPhoneNumber(e.CallerId));
+                                    logger.LogMessage(LogMessageType.INFO, cmd);
 
-                                }
-                                else
-                                {
-                                    LogInfo(string.Format("Failed to find a home record for {0}", e.CallerId));
+                                    if (!isDemoMode)
+                                    {
+                                        //C:\PNC4\runs
+                                        var p = new Process();
+                                        p.StartInfo.WorkingDirectory = @"C:\PNC4\runs\";
+                                        p.StartInfo.FileName = @"C:\PNC4\runs\CallRaiser.exe";
+                                        p.StartInfo.Arguments = string.Format("u:{0};c:{1};p:{2};n:{3}", e.AccountCode, eventMapping.InternalEventCode, e.LineId, StripPhoneNumber(e.CallerId));
+                                        p.StartInfo.RedirectStandardOutput = true;
+                                        p.StartInfo.CreateNoWindow = true;
+                                        p.StartInfo.UseShellExecute = false;
+                                        p.Start();
+                                        p.WaitForExit();
+                                        logger.LogMessage(LogMessageType.INFO, string.Format("Call raised to PNC for account {0}, phone: {1}", e.AccountCode, e.CallerId));
+                                    }
                                 }
                             }
                         }
+                        catch (Exception ex)
+                        {
+                            logger.LogMessage(LogMessageType.INFO, string.Format("Failed to process event Id {0}, {1}. ERROR:{2} ", e.Id, e.ToString(), ex.Message));
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                       LogInfo(string.Format("Failed to process event Id {0}, {1}. ERROR:{2} ", e.Id, e.ToString(), ex.Message));
-                    }
+                    else
+                        logger.LogMessage(LogMessageType.ERROR, string.Format("{0} is not a valid account code", e.AccountCode));
+                   
                 }
             }
 
-            LogInfo("****** Completed events ******");
+            logger.LogMessage(LogMessageType.INFO, "****** Completed events ******");
             return processEvents;
         }
 
