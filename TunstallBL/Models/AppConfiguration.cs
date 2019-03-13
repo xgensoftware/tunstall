@@ -28,5 +28,16 @@ namespace TunstallBL.Models
         {
             get { return ConfigurationManager.AppSettings["StripPhoneNumberField"].Parse<bool>(); }
         }
+
+        public static string PNCConnection
+        {
+            get { return ConfigurationManager.AppSettings["PNC"].ToString(); }
+        }
+
+        public static string LogFile
+        {
+            get { return ConfigurationManager.AppSettings["LogFile"]; }
+        }
+       
     }
 }

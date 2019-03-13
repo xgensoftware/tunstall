@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TunstallServiceProcessor", "TunstallServiceProcessor.csproj", "{1AA39625-B24A-4CCD-9903-8C1F24A06071}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TunstallServiceProcessor", "TunstallServiceProcessor\TunstallServiceProcessor.csproj", "{1AA39625-B24A-4CCD-9903-8C1F24A06071}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TunstallBL", "..\TunstallBL\TunstallBL.csproj", "{377DCE29-CF32-4AAA-B10C-7E6024DD9271}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TunstallBL", "TunstallBL\TunstallBL.csproj", "{377DCE29-CF32-4AAA-B10C-7E6024DD9271}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TunstallDAL", "..\TunstallDAL\TunstallDAL.csproj", "{EE49D2E9-98AD-4223-8061-74A05757DB84}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{38C2F7A2-8837-4D55-A5CF-42ADB6AEDBFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TunstallDAL", "TunstallDAL\TunstallDAL.csproj", "{EE49D2E9-98AD-4223-8061-74A05757DB84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +32,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{377DCE29-CF32-4AAA-B10C-7E6024DD9271} = {38C2F7A2-8837-4D55-A5CF-42ADB6AEDBFD}
+		{EE49D2E9-98AD-4223-8061-74A05757DB84} = {38C2F7A2-8837-4D55-A5CF-42ADB6AEDBFD}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {778C6524-E04A-4D7E-8DC3-539EA031E7AE}
 	EndGlobalSection
 EndGlobal
