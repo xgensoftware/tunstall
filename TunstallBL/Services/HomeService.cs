@@ -80,7 +80,7 @@ namespace TunstallBL.Services
                     var row = data.Rows[0];
 
                     model = new CallCodeModel();
-                    model.CALL_CODE_DEF = 
+                   // model.CALL_CODE_DEF = 
                 }
             }
             catch(Exception e)

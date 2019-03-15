@@ -1,0 +1,172 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BL", "BL", "{0A3851CF-5728-4662-BAB1-E10E5BA0F791}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agency_Import", "..\Agency_Import\Agency_Import.csproj", "{FA43A957-55C8-4118-9961-82EC7F60F127}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kshema_PNC_BL", "..\Kshema_PNC_BL\Kshema_PNC_BL.csproj", "{D1FEB087-E353-4F31-86D6-8ADA533C6B5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PNC_Kshema_BL", "..\PNC_Kshema_BL\PNC_Kshema_BL.csproj", "{8DF89FEE-EAF8-4B08-B246-855608FBD076}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Query Files", "Query Files", "{51A8EA56-ADBE-4CAF-9277-99A73994B253}"
+	ProjectSection(SolutionItems) = preProject
+		..\QueryFiles\Contact_Delete_Log.sql = ..\QueryFiles\Contact_Delete_Log.sql
+		..\QueryFiles\EPEC_Query.sql = ..\QueryFiles\EPEC_Query.sql
+		..\QueryFiles\Get_Contact_Log.sql = ..\QueryFiles\Get_Contact_Log.sql
+		..\QueryFiles\Get_ContactRelation_Log.sql = ..\QueryFiles\Get_ContactRelation_Log.sql
+		..\QueryFiles\Get_Keyword_Log.sql = ..\QueryFiles\Get_Keyword_Log.sql
+		..\QueryFiles\Get_Language_Log.sql = ..\QueryFiles\Get_Language_Log.sql
+		..\QueryFiles\Get_Notes_Log.sql = ..\QueryFiles\Get_Notes_Log.sql
+		..\QueryFiles\Get_PNC_Call_History.sql = ..\QueryFiles\Get_PNC_Call_History.sql
+		..\QueryFiles\Get_Resident_Log.sql = ..\QueryFiles\Get_Resident_Log.sql
+		..\QueryFiles\Get_SubscriberMedicalInfo.sql = ..\QueryFiles\Get_SubscriberMedicalInfo.sql
+		..\QueryFiles\Get_SubscriberMedicalInfo_Delete.sql = ..\QueryFiles\Get_SubscriberMedicalInfo_Delete.sql
+		..\QueryFiles\Get_SubscriberResponders.sql = ..\QueryFiles\Get_SubscriberResponders.sql
+		..\QueryFiles\Get_Subscribers_Delete.sql = ..\QueryFiles\Get_Subscribers_Delete.sql
+		..\QueryFiles\Get_Subscribers_Insert.sql = ..\QueryFiles\Get_Subscribers_Insert.sql
+		..\QueryFiles\Get_Subscribers_Update.sql = ..\QueryFiles\Get_Subscribers_Update.sql
+		..\QueryFiles\Note_Delete_Log.sql = ..\QueryFiles\Note_Delete_Log.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{D08D41D1-25EF-47E5-95F5-A923061FBAEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PNC_Kshema_Sync_Service", "..\PNC_Kshema_Sync_Service\PNC_Kshema_Sync_Service.csproj", "{CEB944ED-C43E-4B1A-ACC3-F177D0B61606}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PNC_Kshema_Sync_App", "..\PNC_Kshema_Sync_App\PNC_Kshema_Sync_App.csproj", "{4B2711A2-3F1A-40A9-ADF9-9257E88C2AE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PNC_Kshema_CallsHistory", "..\PNC_Kshema_CallsHistory\PNC_Kshema_CallsHistory.csproj", "{3E10DAC5-4618-40F6-9C36-744E0D302EEA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test App", "Test App", "{A3072228-D864-4D5D-B9BD-3C30C0CB15ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "..\TestApp\TestApp.csproj", "{D4E8E0E3-84AC-4872-B9B6-DD1517CCB72A}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://xgensoftware.visualstudio.com/defaultcollection
+		SccProjectUniqueName0 = ..\\Agency_Import\\Agency_Import.csproj
+		SccProjectTopLevelParentUniqueName0 = SYNC.sln
+		SccProjectName0 = ../Agency_Import
+		SccLocalPath0 = ..\\Agency_Import
+		SccProjectUniqueName1 = ..\\Kshema_PNC_BL\\Kshema_PNC_BL.csproj
+		SccProjectTopLevelParentUniqueName1 = SYNC.sln
+		SccProjectName1 = ../Kshema_PNC_BL
+		SccLocalPath1 = ..\\Kshema_PNC_BL
+		SccProjectUniqueName2 = ..\\PNC_Kshema_BL\\PNC_Kshema_BL.csproj
+		SccProjectTopLevelParentUniqueName2 = SYNC.sln
+		SccProjectName2 = ../PNC_Kshema_BL
+		SccLocalPath2 = ..\\PNC_Kshema_BL
+		SccProjectUniqueName3 = ..\\PNC_Kshema_CallsHistory\\PNC_Kshema_CallsHistory.csproj
+		SccProjectTopLevelParentUniqueName3 = SYNC.sln
+		SccProjectName3 = ../PNC_Kshema_CallsHistory
+		SccLocalPath3 = ..\\PNC_Kshema_CallsHistory
+		SccProjectUniqueName4 = ..\\PNC_Kshema_Sync_App\\PNC_Kshema_Sync_App.csproj
+		SccProjectTopLevelParentUniqueName4 = SYNC.sln
+		SccProjectName4 = ../PNC_Kshema_Sync_App
+		SccLocalPath4 = ..\\PNC_Kshema_Sync_App
+		SccProjectUniqueName5 = ..\\PNC_Kshema_Sync_Service\\PNC_Kshema_Sync_Service.csproj
+		SccProjectTopLevelParentUniqueName5 = SYNC.sln
+		SccProjectName5 = ../PNC_Kshema_Sync_Service
+		SccLocalPath5 = ..\\PNC_Kshema_Sync_Service
+		SccProjectUniqueName6 = ..\\TestApp\\TestApp.csproj
+		SccProjectTopLevelParentUniqueName6 = SYNC.sln
+		SccProjectName6 = ../TestApp
+		SccLocalPath6 = ..\\TestApp
+		SccLocalPath7 = .
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA43A957-55C8-4118-9961-82EC7F60F127}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA43A957-55C8-4118-9961-82EC7F60F127}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA43A957-55C8-4118-9961-82EC7F60F127}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{FA43A957-55C8-4118-9961-82EC7F60F127}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{FA43A957-55C8-4118-9961-82EC7F60F127}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FA43A957-55C8-4118-9961-82EC7F60F127}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA43A957-55C8-4118-9961-82EC7F60F127}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA43A957-55C8-4118-9961-82EC7F60F127}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{FA43A957-55C8-4118-9961-82EC7F60F127}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{FA43A957-55C8-4118-9961-82EC7F60F127}.Release|x86.ActiveCfg = Release|Any CPU
+		{D1FEB087-E353-4F31-86D6-8ADA533C6B5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1FEB087-E353-4F31-86D6-8ADA533C6B5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1FEB087-E353-4F31-86D6-8ADA533C6B5A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D1FEB087-E353-4F31-86D6-8ADA533C6B5A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D1FEB087-E353-4F31-86D6-8ADA533C6B5A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D1FEB087-E353-4F31-86D6-8ADA533C6B5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1FEB087-E353-4F31-86D6-8ADA533C6B5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1FEB087-E353-4F31-86D6-8ADA533C6B5A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D1FEB087-E353-4F31-86D6-8ADA533C6B5A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D1FEB087-E353-4F31-86D6-8ADA533C6B5A}.Release|x86.ActiveCfg = Release|Any CPU
+		{8DF89FEE-EAF8-4B08-B246-855608FBD076}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DF89FEE-EAF8-4B08-B246-855608FBD076}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DF89FEE-EAF8-4B08-B246-855608FBD076}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{8DF89FEE-EAF8-4B08-B246-855608FBD076}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{8DF89FEE-EAF8-4B08-B246-855608FBD076}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8DF89FEE-EAF8-4B08-B246-855608FBD076}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DF89FEE-EAF8-4B08-B246-855608FBD076}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DF89FEE-EAF8-4B08-B246-855608FBD076}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{8DF89FEE-EAF8-4B08-B246-855608FBD076}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{8DF89FEE-EAF8-4B08-B246-855608FBD076}.Release|x86.ActiveCfg = Release|Any CPU
+		{CEB944ED-C43E-4B1A-ACC3-F177D0B61606}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{CEB944ED-C43E-4B1A-ACC3-F177D0B61606}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{CEB944ED-C43E-4B1A-ACC3-F177D0B61606}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{CEB944ED-C43E-4B1A-ACC3-F177D0B61606}.Debug|x86.ActiveCfg = Debug|x86
+		{CEB944ED-C43E-4B1A-ACC3-F177D0B61606}.Debug|x86.Build.0 = Debug|x86
+		{CEB944ED-C43E-4B1A-ACC3-F177D0B61606}.Release|Any CPU.ActiveCfg = Release|x86
+		{CEB944ED-C43E-4B1A-ACC3-F177D0B61606}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{CEB944ED-C43E-4B1A-ACC3-F177D0B61606}.Release|Mixed Platforms.Build.0 = Release|x86
+		{CEB944ED-C43E-4B1A-ACC3-F177D0B61606}.Release|x86.ActiveCfg = Release|x86
+		{CEB944ED-C43E-4B1A-ACC3-F177D0B61606}.Release|x86.Build.0 = Release|x86
+		{4B2711A2-3F1A-40A9-ADF9-9257E88C2AE0}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{4B2711A2-3F1A-40A9-ADF9-9257E88C2AE0}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{4B2711A2-3F1A-40A9-ADF9-9257E88C2AE0}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{4B2711A2-3F1A-40A9-ADF9-9257E88C2AE0}.Debug|x86.ActiveCfg = Debug|x86
+		{4B2711A2-3F1A-40A9-ADF9-9257E88C2AE0}.Debug|x86.Build.0 = Debug|x86
+		{4B2711A2-3F1A-40A9-ADF9-9257E88C2AE0}.Release|Any CPU.ActiveCfg = Release|x86
+		{4B2711A2-3F1A-40A9-ADF9-9257E88C2AE0}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{4B2711A2-3F1A-40A9-ADF9-9257E88C2AE0}.Release|Mixed Platforms.Build.0 = Release|x86
+		{4B2711A2-3F1A-40A9-ADF9-9257E88C2AE0}.Release|x86.ActiveCfg = Release|x86
+		{4B2711A2-3F1A-40A9-ADF9-9257E88C2AE0}.Release|x86.Build.0 = Release|x86
+		{3E10DAC5-4618-40F6-9C36-744E0D302EEA}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{3E10DAC5-4618-40F6-9C36-744E0D302EEA}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{3E10DAC5-4618-40F6-9C36-744E0D302EEA}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{3E10DAC5-4618-40F6-9C36-744E0D302EEA}.Debug|x86.ActiveCfg = Debug|x86
+		{3E10DAC5-4618-40F6-9C36-744E0D302EEA}.Debug|x86.Build.0 = Debug|x86
+		{3E10DAC5-4618-40F6-9C36-744E0D302EEA}.Release|Any CPU.ActiveCfg = Release|x86
+		{3E10DAC5-4618-40F6-9C36-744E0D302EEA}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{3E10DAC5-4618-40F6-9C36-744E0D302EEA}.Release|Mixed Platforms.Build.0 = Release|x86
+		{3E10DAC5-4618-40F6-9C36-744E0D302EEA}.Release|x86.ActiveCfg = Release|x86
+		{3E10DAC5-4618-40F6-9C36-744E0D302EEA}.Release|x86.Build.0 = Release|x86
+		{D4E8E0E3-84AC-4872-B9B6-DD1517CCB72A}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{D4E8E0E3-84AC-4872-B9B6-DD1517CCB72A}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{D4E8E0E3-84AC-4872-B9B6-DD1517CCB72A}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{D4E8E0E3-84AC-4872-B9B6-DD1517CCB72A}.Debug|x86.ActiveCfg = Debug|x86
+		{D4E8E0E3-84AC-4872-B9B6-DD1517CCB72A}.Debug|x86.Build.0 = Debug|x86
+		{D4E8E0E3-84AC-4872-B9B6-DD1517CCB72A}.Release|Any CPU.ActiveCfg = Release|x86
+		{D4E8E0E3-84AC-4872-B9B6-DD1517CCB72A}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{D4E8E0E3-84AC-4872-B9B6-DD1517CCB72A}.Release|Mixed Platforms.Build.0 = Release|x86
+		{D4E8E0E3-84AC-4872-B9B6-DD1517CCB72A}.Release|x86.ActiveCfg = Release|x86
+		{D4E8E0E3-84AC-4872-B9B6-DD1517CCB72A}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FA43A957-55C8-4118-9961-82EC7F60F127} = {0A3851CF-5728-4662-BAB1-E10E5BA0F791}
+		{D1FEB087-E353-4F31-86D6-8ADA533C6B5A} = {0A3851CF-5728-4662-BAB1-E10E5BA0F791}
+		{8DF89FEE-EAF8-4B08-B246-855608FBD076} = {0A3851CF-5728-4662-BAB1-E10E5BA0F791}
+		{CEB944ED-C43E-4B1A-ACC3-F177D0B61606} = {D08D41D1-25EF-47E5-95F5-A923061FBAEB}
+		{4B2711A2-3F1A-40A9-ADF9-9257E88C2AE0} = {D08D41D1-25EF-47E5-95F5-A923061FBAEB}
+		{3E10DAC5-4618-40F6-9C36-744E0D302EEA} = {D08D41D1-25EF-47E5-95F5-A923061FBAEB}
+		{D4E8E0E3-84AC-4872-B9B6-DD1517CCB72A} = {A3072228-D864-4D5D-B9BD-3C30C0CB15ED}
+	EndGlobalSection
+EndGlobal
