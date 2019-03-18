@@ -39,9 +39,8 @@ namespace TunstallBL.Services
 
             sql.Append("SELECT * FROM EPEC_LOCATION el ");
             sql.Append("JOIN RESIDENT r ON r.LOCATION_REF = el.LOCATION_DEF ");
-            sql.Append("WHERE el.OTHER_PHONE = '@PHONE' ");
+            sql.AppendFormat("WHERE el.OTHER_PHONE = '{0}' ", phone);
             sql.Append("ORDER BY r.PRIORITY ASC");
-            sql.Replace("@PHONE", phone);
             
             try
             {
@@ -67,8 +66,7 @@ namespace TunstallBL.Services
         {
             CallCodeModel model = null;
             StringBuilder sql = new StringBuilder();
-            sql.Append("SELECT * FROM CALL_CODE_LOOKUP WHERE CALL_CODE_TO_USE = '@CODE'");
-            sql.Replace("@CODE", internalEventCode);
+            sql.AppendFormat("SELECT * FROM CALL_CODE_LOOKUP WHERE CALL_CODE_TO_USE = '{0}'",internalEventCode);
 
             try
             {
@@ -80,7 +78,7 @@ namespace TunstallBL.Services
                     var row = data.Rows[0];
 
                     model = new CallCodeModel();
-                   // model.CALL_CODE_DEF = 
+                    model.CALL_CODE_DEF = row["CALL_CODE_DEF"].Parse<long>();
                 }
             }
             catch(Exception e)
