@@ -32,10 +32,15 @@ namespace MytrexAPI.Controllers
                 newEvent.Zone = model.Zone;
                 newEvent.LineId = "C4";
                 newEvent.VerificationURL = model.VerificationUrl;
-                newEvent.Latitude = double.Parse(model.Location.Latitude);
-                newEvent.Longitude = double.Parse(model.Location.Longitude);
                 newEvent.EventTimeStamp = DateTime.Now;
                 newEvent.ServiceId = (int)External_Service.ANELTO;
+
+                if (model.Location != null)
+                {
+                    newEvent.Latitude = double.Parse(model.Location.Latitude);
+                    newEvent.Longitude = double.Parse(model.Location.Longitude);
+                }
+
                 db.Events.Add(newEvent);
                 await db.SaveChangesAsync();
 
