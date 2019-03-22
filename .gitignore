@@ -774,3 +774,7 @@ TunstallDAL.Migrations.Alter_Event_EventZone.resources
 /TunstallDAL/obj/Release/TunstallDAL.csproj.CopyComplete
 /TunstallDAL/obj/Release/TunstallDAL.csproj.CoreCompileInputs.cache
 /TunstallDAL/obj/Release/TunstallDAL.csprojAssemblyReference.cache
+.dtbcache
+storage.ide-shm
+storage.ide-wal
+TunstallDAL.csprojAssemblyReference.cache
