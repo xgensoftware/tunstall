@@ -81,11 +81,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\TunstallBL\TunstallBL.csproj">
-      <Project>{377dce29-cf32-4aaa-b10c-7e6024dd9271}</Project>
-      <Name>TunstallBL</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

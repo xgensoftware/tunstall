@@ -19,9 +19,9 @@ namespace TunstallBL.Models
             get { return ConfigurationManager.AppSettings["MytrexDealerKey"]; }
         }
 
-        public static string MytrexUsername
+        public static string AneltoAPIUsername
         {
-            get { return ConfigurationManager.AppSettings["MytrexUsername"]; }
+            get { return ConfigurationManager.AppSettings["AneltoAPIUsername"]; }
         }
 
         public static bool StripPhoneNumberField
@@ -39,5 +39,9 @@ namespace TunstallBL.Models
             get { return ConfigurationManager.AppSettings["LogFile"]; }
         }
        
+        public static string AneltoAPIPassword
+        {
+            get { return ConfigurationManager.AppSettings["AneltoAPIPassword"]; }
+        }
     }
 }

@@ -120,6 +120,14 @@ namespace TunstallBL.Services
             return processEvents;
         }
 
+        public string GetUrlBy(string phoneNumber)
+        {
+            var events = _db.Events.Where(e => e.CallerId == phoneNumber && !(e.VerificationURL == null || e.VerificationURL.Equals(""))).OrderByDescending(e => e.Id).FirstOrDefault();
+            if (events != null)
+                return events.VerificationURL;
+            else
+                return string.Empty;
+        }
         #endregion
     }
 }

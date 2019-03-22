@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MytrexIntegrationBrowser", "MytrexIntegrationBrowser.csproj", "{1CCC18F1-74DD-478F-A845-E0F999522FB6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MytrexIntegrationBrowser", "MytrexIntegration\MytrexIntegrationBrowser\MytrexIntegrationBrowser.csproj", "{1CCC18F1-74DD-478F-A845-E0F999522FB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TunstallBL", "..\..\TunstallBL\TunstallBL.csproj", "{377DCE29-CF32-4AAA-B10C-7E6024DD9271}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MytrexIntegrationForm", "MytrexIntegration\MytrexIntegrationForm\MytrexIntegrationForm.csproj", "{780AE8EE-EA00-4666-B609-2836925B8BD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MytrexIntegrationForm", "..\MytrexIntegrationForm\MytrexIntegrationForm.csproj", "{780AE8EE-EA00-4666-B609-2836925B8BD5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{F5434FDB-13CA-499B-A766-4C2E735B3784}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TunstallBL", "TunstallBL\TunstallBL.csproj", "{377DCE29-CF32-4AAA-B10C-7E6024DD9271}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,16 +21,22 @@ Global
 		{1CCC18F1-74DD-478F-A845-E0F999522FB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CCC18F1-74DD-478F-A845-E0F999522FB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CCC18F1-74DD-478F-A845-E0F999522FB6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{377DCE29-CF32-4AAA-B10C-7E6024DD9271}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{377DCE29-CF32-4AAA-B10C-7E6024DD9271}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{377DCE29-CF32-4AAA-B10C-7E6024DD9271}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{377DCE29-CF32-4AAA-B10C-7E6024DD9271}.Release|Any CPU.Build.0 = Release|Any CPU
 		{780AE8EE-EA00-4666-B609-2836925B8BD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{780AE8EE-EA00-4666-B609-2836925B8BD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{780AE8EE-EA00-4666-B609-2836925B8BD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{780AE8EE-EA00-4666-B609-2836925B8BD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{377DCE29-CF32-4AAA-B10C-7E6024DD9271}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{377DCE29-CF32-4AAA-B10C-7E6024DD9271}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{377DCE29-CF32-4AAA-B10C-7E6024DD9271}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{377DCE29-CF32-4AAA-B10C-7E6024DD9271}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{377DCE29-CF32-4AAA-B10C-7E6024DD9271} = {F5434FDB-13CA-499B-A766-4C2E735B3784}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4FFAF4BB-E0A3-4F4D-84A1-476E95F765AF}
 	EndGlobalSection
 EndGlobal
