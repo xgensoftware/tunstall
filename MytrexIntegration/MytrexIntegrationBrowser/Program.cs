@@ -20,7 +20,7 @@ namespace MytrexIntegrationBrowser
             var dealerKey = ConfigurationManager.AppSettings["DealerKey"].ToString();
             var username = ConfigurationManager.AppSettings["Username"].ToString();
             var url = ConfigurationManager.AppSettings["MytrexUrl"].ToString();
-            
+            //args = new string[] { "3852819134" };
             if(args != null)
             {
                 if(args.Count() > 0)

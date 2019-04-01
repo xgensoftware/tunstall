@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{204C0F91-8063-4650-89E8-C1930494A8AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TunstallBL", "TunstallBL\TunstallBL.csproj", "{377DCE29-CF32-4AAA-B10C-7E6024DD9271}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TunstallDAL", "TunstallDAL\TunstallDAL.csproj", "{EE49D2E9-98AD-4223-8061-74A05757DB84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AneltoIntegrationBrowser", "AneltoIntegrationBrowser\AneltoIntegrationBrowser.csproj", "{E268C585-DB12-4A8E-B448-E207AEFB8848}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MytrexIntegrationBrowser", "MytrexIntegration\MytrexIntegrationBrowser\MytrexIntegrationBrowser.csproj", "{1CCC18F1-74DD-478F-A845-E0F999522FB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MytrexIntegrationForm", "MytrexIntegration\MytrexIntegrationForm\MytrexIntegrationForm.csproj", "{780AE8EE-EA00-4666-B609-2836925B8BD5}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ThirdPartyAppInstaller", "ThirdPartyAppInstaller\ThirdPartyAppInstaller.vdproj", "{427ADCB9-8BF0-4EB3-BC0C-E880EDB9F832}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{377DCE29-CF32-4AAA-B10C-7E6024DD9271}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{377DCE29-CF32-4AAA-B10C-7E6024DD9271}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{377DCE29-CF32-4AAA-B10C-7E6024DD9271}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{377DCE29-CF32-4AAA-B10C-7E6024DD9271}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE49D2E9-98AD-4223-8061-74A05757DB84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE49D2E9-98AD-4223-8061-74A05757DB84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE49D2E9-98AD-4223-8061-74A05757DB84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE49D2E9-98AD-4223-8061-74A05757DB84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E268C585-DB12-4A8E-B448-E207AEFB8848}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E268C585-DB12-4A8E-B448-E207AEFB8848}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E268C585-DB12-4A8E-B448-E207AEFB8848}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E268C585-DB12-4A8E-B448-E207AEFB8848}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CCC18F1-74DD-478F-A845-E0F999522FB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CCC18F1-74DD-478F-A845-E0F999522FB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CCC18F1-74DD-478F-A845-E0F999522FB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CCC18F1-74DD-478F-A845-E0F999522FB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{780AE8EE-EA00-4666-B609-2836925B8BD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{780AE8EE-EA00-4666-B609-2836925B8BD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{780AE8EE-EA00-4666-B609-2836925B8BD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{780AE8EE-EA00-4666-B609-2836925B8BD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{427ADCB9-8BF0-4EB3-BC0C-E880EDB9F832}.Debug|Any CPU.ActiveCfg = Debug
+		{427ADCB9-8BF0-4EB3-BC0C-E880EDB9F832}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{377DCE29-CF32-4AAA-B10C-7E6024DD9271} = {204C0F91-8063-4650-89E8-C1930494A8AE}
+		{EE49D2E9-98AD-4223-8061-74A05757DB84} = {204C0F91-8063-4650-89E8-C1930494A8AE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {25BE0004-39AF-48AC-BDC2-33DA90D039E0}
+	EndGlobalSection
+EndGlobal

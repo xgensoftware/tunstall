@@ -39,11 +39,11 @@ namespace TunstallBL.API
             var response = client.Execute(request);
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                throw new Exception(string.Format("Failed Anelto SubscriberCreateUpdate. Response: {0}", response.Content));
+                throw new Exception(string.Format("Failed Anelto SubscriberCreateUpdate. Status: {0} Response: {1}", response.StatusCode.ToString(), response.Content));
             }
             else
             {
-                return string.Format("Successfully sent signal to Anelto. Response: {0}", response.ResponseStatus.ToString());
+                return string.Format("Successfully sent signal to Anelto. Status: {0} Response: {0}", response.StatusCode, response.ResponseStatus.ToString());
             }
         }
     }
