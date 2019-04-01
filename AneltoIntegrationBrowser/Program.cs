@@ -19,7 +19,7 @@ namespace AneltoIntegrationBrowser
         [STAThread]
         static void Main(string[] args)
         {
-            args = new string[] { "2158033100" };
+           // args = new string[] { "2158033100" };
             if (args.Count() > 0)
             {
                 var log = new LogHelper(AppConfiguration.LogFile);
