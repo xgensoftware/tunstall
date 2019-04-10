@@ -34,7 +34,7 @@ namespace TunstallBL.Helpers
             var fileName = Path.GetFileName(logfile);
             var split = fileName.Split('.');
             var newFileName = string.Format("{0}_{1}.{2}", split[0], DateTime.Now.ToString("yyyyMMdd"), split[1]);
-            _logFile = newFileName;
+            _logFile =logfile.Replace(fileName, newFileName);
         }
 
 
@@ -62,31 +62,19 @@ namespace TunstallBL.Helpers
 
             try
             {
-                string dir = Path.GetDirectoryName(_logFile);
-                if (!Directory.Exists(dir) & !string.IsNullOrEmpty(dir))
-                {
-                    Directory.CreateDirectory(dir);
-                }
-
-                if (!File.Exists(_logFile))
-                {
-                    File.Create(_logFile).Close();
-                }
-
-
                 using (StreamWriter sw = File.AppendText(_logFile))
                 {
-                    //050118KF Added date 
-                    string msg = string.Format("{0} {1}: {2}", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), type.ToString(), message);
+                    string msg = string.Format("{0} {1}: {2}", DateTime.Now.ToString("HH:mm:ss"), type.ToString(), message);
                     sw.WriteLine(msg);
                     Console.WriteLine(msg);
                 }
             }
-            catch (Exception ex) { }
+            catch { }
             finally
             {
                 _readWriteLock.ExitWriteLock();
             }
+            
         }
 
         #endregion
