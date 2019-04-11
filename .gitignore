@@ -809,3 +809,5 @@ TunstallDAL.csprojAssemblyReference.cache
 /ThirdPartyApps/RestSharp.xml
 /ThirdPartyApps/iAnywhere.Data.SQLAnywhere.v4.0.dll
 /ThirdPartyApps/iAnywhere.Data.SQLAnywhere.v4.0.xml
+/TunstallServiceProcessor/bin/Debug/RestSharp.dll
+/TunstallServiceProcessor/bin/Debug/RestSharp.xml
