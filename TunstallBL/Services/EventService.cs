@@ -48,7 +48,7 @@ namespace TunstallBL.Services
                                     Id = e.Id,
                                     AccountCode = e.AccountCode,
                                     CallerId = e.CallerId,
-                                    EventCode = e.EventZone,
+                                    EventCode = e.ServiceId == 2 ? e.EventCode : e.EventZone,
                                     Qualifier = e.Qualifier,
                                     Zone = e.Zone,
                                     LineId = e.LineId,
@@ -71,9 +71,13 @@ namespace TunstallBL.Services
 
             if(processEvents)
             {
+                logger.LogMessage(LogMessageType.INFO,string.Format("Processing {0} records", eventModels.Count));
+
                 //call CallRaiser.exe for each transaction
                 foreach (var e in eventModels)
                 {
+                    logger.LogMessage(LogMessageType.INFO, string.Format("Processing Account: {0} Phone: {1}\r\n", e.AccountCode,e.CallerId));
+
                     int i = 0;
                     bool result = int.TryParse(e.AccountCode, out i);
                     if (result)
@@ -82,6 +86,7 @@ namespace TunstallBL.Services
                         {
                             using (var db = new TunstallDatabaseContext())
                             {
+                                logger.LogMessage(LogMessageType.INFO, string.Format("Searching EventCodeMapping for event code {0}", e.EventCode));
                                 var eventMapping = db.EventCodeMappings.Where(m => m.ExternalEventCode == e.EventCode).FirstOrDefault();
                                 if (eventMapping != null)
                                 {
