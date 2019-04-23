@@ -811,3 +811,9 @@ TunstallDAL.csprojAssemblyReference.cache
 /ThirdPartyApps/iAnywhere.Data.SQLAnywhere.v4.0.xml
 /TunstallServiceProcessor/bin/Debug/RestSharp.dll
 /TunstallServiceProcessor/bin/Debug/RestSharp.xml
+/MytrexAPI/bin/Release/MytrexAPI/bin/RestSharp.dll
+/MytrexAPI/bin/RestSharp.dll
+/MytrexAPI/bin/RestSharp.xml
+/MytrexAPI/obj/Release/Package/PackageTmp/bin/RestSharp.dll
+/TestProject/bin/Release/RestSharp.dll
+/TestProject/bin/Release/RestSharp.xml
