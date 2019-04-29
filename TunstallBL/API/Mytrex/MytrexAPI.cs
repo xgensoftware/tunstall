@@ -48,6 +48,7 @@ namespace TunstallBL.API
 
             var request = FormRequest(Method.PUT, string.Format("/unit/event?dealerkey={0}", AppConfigurationHelper.MytrexDealerKey));
             request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+            request.AddJsonBody(events);
 
             IRestResponse response = client.Execute(request); 
             if(response.StatusCode == System.Net.HttpStatusCode.OK)

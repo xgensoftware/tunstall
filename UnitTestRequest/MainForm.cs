@@ -86,8 +86,6 @@ namespace UnitTestRequest
 
         bool SendToMytrex(TESTMODE mode, string unitId, string serialNum)
         {
-            var model = new MytrexUnitEvent();
-
             try
             {
                 string testFileName = AppConfigurationHelper.MytrextTestEvents;
@@ -100,16 +98,16 @@ namespace UnitTestRequest
 
                 //Change the serialnumber for the events
                 eventList.ForEach(e => e.UnitSerNum = serialNum);
-
+                
                 var api = new MytrexAPI();
                 var response = api.UpdateEvents(eventList);
-                LogMessage(string.Format("Sent to Mytrex Update Events with response {0} for unit {1}. Data: {2}", response, unitId, model.ToJson()));
+                LogMessage(string.Format("Sent to Mytrex Update Events with response {0} for unit {1}. Data: {2}", response, unitId, eventList.ToJson()));
 
                 return true;
             }
             catch (Exception ex)
             {
-                LogMessage(string.Format("Failed to send to Mytrex API Unit Event for unit {0}. DATA: {1}. ERROR: {2}", unitId, model.ToJson(), ex.Message));
+                LogMessage(string.Format("Failed to send to Mytrex API Unit Event for unit {0}.ERROR: {1}", unitId, ex.Message));
                 return false;
             }
         }

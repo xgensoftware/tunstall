@@ -1,6 +1,6 @@
 [
 {
-	"UnitSerNum": "L102VA",
+	"UnitSerNum": "",
 	"EventCategoryName": "Base Unit Help",
 	"EventCategoryPhone1": "18442318969",
 	"EventCategoryPhone2": "18442319325",
@@ -14,7 +14,7 @@
 	}]
 },
 {
-	"UnitSerNum": "L102VA",
+	"UnitSerNum": "",
 	"EventCategoryName": "Fall Detection",
 	"EventCategoryPhone1": "18442319302",
 	"EventCategoryPhone2": "18442319334",
@@ -28,7 +28,7 @@
 	}]
 },
 {
-	"UnitSerNum": "L102VA",
+	"UnitSerNum": "",
 	"EventCategoryName": "PHB Alarm",
 	"EventCategoryPhone1": "18442319234",
 	"EventCategoryPhone2": "18442319332",
