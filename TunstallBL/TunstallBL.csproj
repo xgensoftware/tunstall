@@ -73,14 +73,16 @@
   <ItemGroup>
     <Compile Include="API\Anelto\AneltoSubscriberUpdateRequest.cs" />
     <Compile Include="API\Anelto\AneltoAPI.cs" />
+    <Compile Include="API\Mytrex\MytrexAPI.cs" />
+    <Compile Include="API\Mytrex\MytrexUnitEventRequest.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Helpers\AppConfigurationHelper.cs" />
     <Compile Include="Helpers\JWTHelper.cs" />
     <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Models\AneltoSignalModel.cs" />
-    <Compile Include="Models\AppConfiguration.cs" />
     <Compile Include="Models\CallCodeModel.cs" />
     <Compile Include="Models\CallHistoryModel.cs" />
+    <Compile Include="Models\CellDeviceModel.cs" />
     <Compile Include="Models\EventModel.cs" />
     <Compile Include="Models\Home.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

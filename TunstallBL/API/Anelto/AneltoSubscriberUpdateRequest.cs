@@ -7,6 +7,13 @@ using Newtonsoft.Json;
 
 namespace TunstallBL.API.Model
 {
+    public class AneltoSubscriberOverrideRequest
+    {
+        public string accounts { get; set; }
+
+        public string number { get; set; }
+    }
+    
     public class AneltoSubscriberUpdateRequest
     {
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]

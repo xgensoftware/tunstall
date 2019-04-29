@@ -7,13 +7,12 @@ using RestSharp;
 using RestSharp.Authenticators;
 using Newtonsoft.Json;
 using TunstallBL.API.Model;
+using TunstallBL.Helpers;
 namespace TunstallBL.API
 {
     public class AneltoAPI
     {
         #region Member Variables
-        string _username = string.Empty;
-        string _password = string.Empty;
         RestClient _client = null;
         #endregion
 
@@ -22,17 +21,15 @@ namespace TunstallBL.API
         #endregion
 
         #region Constructor
-        public AneltoAPI(string username, string password)
+        public AneltoAPI()
         {
-            _username = username;
-            _password = password;
         }
         #endregion
 
         public string SubscriberCreateUpdate(AneltoSubscriberUpdateRequest model)
         {
-            var client = new RestClient("https://ss.anelto.com:12332");
-            client.Authenticator = new HttpBasicAuthenticator(_username, _password);
+            var client = new RestClient(AppConfigurationHelper.AneltoURL);
+            client.Authenticator = new HttpBasicAuthenticator(AppConfigurationHelper.AneltoAPIUsername, AppConfigurationHelper.AneltoAPIPassword);
 
             var request = FormRequest(Method.POST, "/subscriber/create");
             request.AddJsonBody(model);
@@ -40,6 +37,32 @@ namespace TunstallBL.API
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
                 throw new Exception(string.Format("Failed Anelto SubscriberCreateUpdate. Status: {0} Response: {1}", response.StatusCode.ToString(), response.Content));
+            }
+            else
+            {
+                return string.Format("Successfully sent signal to Anelto. Status: {0} Response: {0}", response.StatusCode, response.ResponseStatus.ToString());
+            }
+        }
+
+        public string SubscriberCCOverride(AneltoSubscriberOverrideRequest model)
+        {
+            var client = new RestClient(AppConfigurationHelper.AneltoURL);
+            client.Authenticator = new HttpBasicAuthenticator(AppConfigurationHelper.AneltoAPIUsername, AppConfigurationHelper.AneltoAPIPassword);
+
+            var request = FormRequest(Method.POST, "/subscriber/ccoverride");
+
+            StringBuilder body = new StringBuilder();
+            body.Append("{");
+            body.AppendFormat("\"accounts\":[\"{0}\"],", model.accounts);
+            body.AppendFormat("\"number\":\"{0}\"", model.number);
+            body.Append("}");
+            
+            request.AddJsonBody(body.ToString());
+
+            var response = client.Execute(request);
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                throw new Exception(string.Format("Failed Anelto SubscriberCCOverride. Status: {0} Response: {1}", response.StatusCode.ToString(), response.Content));
             }
             else
             {

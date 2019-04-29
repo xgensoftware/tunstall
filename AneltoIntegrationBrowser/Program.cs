@@ -22,7 +22,7 @@ namespace AneltoIntegrationBrowser
             //args = new string[] { "2158033100" };
             if (args.Count() > 0)
             {
-                var log = new LogHelper(AppConfiguration.LogFile);
+                var log = new LogHelper(AppConfigurationHelper.LogFile);
                 string phoneNumber = args[0];
                 
 
@@ -54,7 +54,7 @@ namespace AneltoIntegrationBrowser
                     var model = new AneltoSubscriberUpdateRequest();
                     try
                     {
-                        model.ani = AppConfiguration.StripPhoneNumberField ? home.OTHER_PHONE.Remove(0, 1) : home.OTHER_PHONE;
+                        model.ani = AppConfigurationHelper.StripPhoneNumberField ? home.OTHER_PHONE.Remove(0, 1) : home.OTHER_PHONE;
                         var resident = home.Residents.OrderBy(r => r.PRIORITY).First();
                         model.firstname = resident.FIRST_NAME;
                         model.lastname = resident.LAST_NAME;
@@ -64,7 +64,7 @@ namespace AneltoIntegrationBrowser
                         model.state = home.ADDRESS_COUNTY;
                         model.zip = home.ADDRESS_POSTCODE;
 
-                        AneltoAPI api = new AneltoAPI(AppConfiguration.AneltoAPIUsername, AppConfiguration.AneltoAPIPassword);
+                        AneltoAPI api = new AneltoAPI();
                         var response = api.SubscriberCreateUpdate(model);
                         log.LogMessage(LogMessageType.INFO, string.Format("Sent to Anelto with resposne {0} for phone number {1}. Data: {2}", response,phoneNumber, model.ToJson()));
                     }
@@ -78,7 +78,7 @@ namespace AneltoIntegrationBrowser
 
                     try
                     {
-                        var strip = AppConfiguration.StripPhoneNumberField ? phoneNumber.Remove(0, 1) : phoneNumber;
+                        var strip = AppConfigurationHelper.StripPhoneNumberField ? phoneNumber.Remove(0, 1) : phoneNumber;
                         url = EventService.Instance.GetUrlBy(strip);
                     }
                     catch(Exception ex)

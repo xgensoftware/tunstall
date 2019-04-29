@@ -1,0 +1,44 @@
+[
+{
+	"UnitSerNum": "L102VA",
+	"EventCategoryName": "Base Unit Help",
+	"EventCategoryPhone1": "18442318969",
+	"EventCategoryPhone2": "18442319325",
+	"EventData": [{
+		"EventName": "Front Panel",
+		"EventCode": "100",
+		"InitialVoice": "Mic On",
+		"Enabled": 1,
+		"Beeping": 1,
+		"VoiceAnnouncements": 1
+	}]
+},
+{
+	"UnitSerNum": "L102VA",
+	"EventCategoryName": "Fall Detection",
+	"EventCategoryPhone1": "18442319302",
+	"EventCategoryPhone2": "18442319334",
+	"EventData": [{
+		"EventName": "PHB Fall Alarm",
+		"EventCode": "104",
+		"InitialVoice": "Mic On",
+		"Enabled": 1,
+		"Beeping": 1,
+		"VoiceAnnouncements": 1
+	}]
+},
+{
+	"UnitSerNum": "L102VA",
+	"EventCategoryName": "PHB Alarm",
+	"EventCategoryPhone1": "18442319234",
+	"EventCategoryPhone2": "18442319332",
+	"EventData": [{
+		"EventName": "PHB Alarm",
+		"EventCode": "101",
+		"InitialVoice": "Mic On",
+		"Enabled": 1,
+		"Beeping": 1,
+		"VoiceAnnouncements": 1
+	}]
+	}
+]

@@ -49,7 +49,7 @@ namespace TunstallBL.Services
 
        protected string StripPhoneNumber(string phoneNumber)
         {
-            if (AppConfiguration.StripPhoneNumberField)
+            if (AppConfigurationHelper.StripPhoneNumberField)
             {
                 return phoneNumber.Remove(0, 1);
             }
