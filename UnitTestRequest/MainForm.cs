@@ -40,7 +40,7 @@ namespace UnitTestRequest
                 _log.LogMessage(LogMessageType.INFO, message);
             }
 
-            // log to ui console window
+            //log to ui console window
             txtConsole.Text = string.Format("{0}    {1}", DateTime.Now.ToString("yyyyMMdd HH:mm:ss"), message) + Environment.NewLine + txtConsole.Text;
         }
 
@@ -134,7 +134,7 @@ namespace UnitTestRequest
                             break;
                     }
 
-                    LogMessage(string.Format("Unit {0} : Mode: {1}", unitId, mode.ToString()));
+                    LogMessage(string.Format("Unit {0} : Test Mode: {1}", unitId, mode.ToString()));
 
 
                     bool isSuccess = false;
@@ -158,7 +158,7 @@ namespace UnitTestRequest
                     if (isSuccess)
                     {
                         HomeService.Instance.UpdateCellDeviceStatus(cellDevice.ID, mode == TESTMODE.ON ? true : false);
-                        LogMessage(string.Format("Set cell device {0} to {1}.", unitId, mode.ToString()));
+                        LogMessage(string.Format("Set cell device {0} test status to {1}.", unitId, mode.ToString()));
                     }
                 }
                 else
@@ -169,7 +169,7 @@ namespace UnitTestRequest
                 LoadCellDeviceGrid();
 
                 txtUnit.Clear();
-                txtUnit.Focus();
+                //txtUnit.Focus();
             }
         }
         #endregion
@@ -180,17 +180,21 @@ namespace UnitTestRequest
             this.Load += MainForm_Load;
             btnOnTest.Click += BtnOnTest_Click;
             btnOffTest.Click += BtnOffTest_Click;
-            txtUnit.LostFocus += TxtUnit_LostFocus;
+            txtUnit.KeyDown += TxtUnit_KeyDown;
             _log = new LogHelper(AppConfigurationHelper.LogFile);
 
             this.Text = string.Format("{0}  {1}", Application.ProductName, Application.ProductVersion);
         }
 
-        private void TxtUnit_LostFocus(object sender, EventArgs e)
+        private void TxtUnit_KeyDown(object sender, KeyEventArgs e)
         {
-            var unitId = txtUnit.Text;
-            SetUnitTestMode(unitId);
+            if(e.KeyCode == Keys.Enter)
+            {
+                var unitId = txtUnit.Text;
+                SetUnitTestMode(unitId);
+            }
         }
+        
 
         private void BtnOffTest_Click(object sender, EventArgs e)
         {
@@ -208,7 +212,7 @@ namespace UnitTestRequest
         {
             LoadCellDeviceGrid();
 
-            txtUnit.Focus();
+            this.ActiveControl = txtUnit;
 
         }
     }
