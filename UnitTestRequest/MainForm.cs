@@ -161,6 +161,7 @@ namespace UnitTestRequest
                 }
                 else
                 {
+                    MessageBox.Show(string.Format("Found no cell device for unit {0}.", unitId));
                     LogMessage(string.Format("Found no cell device for unit {0}.", unitId));
                 }
 
