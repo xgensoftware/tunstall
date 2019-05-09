@@ -140,7 +140,7 @@
             // 
             // Serial
             // 
-            this.Serial.DataPropertyName = "SERIAL";
+            this.Serial.DataPropertyName = "SERIALNO";
             this.Serial.HeaderText = "Serial";
             this.Serial.Name = "Serial";
             this.Serial.ReadOnly = true;
