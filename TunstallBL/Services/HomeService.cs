@@ -161,5 +161,55 @@ namespace TunstallBL.Services
                 LogError(e);
             }
         }
+
+        public List<CellDeviceModel> SearchCellDevice(CellDeviceSearchModel model)
+        {
+            StringBuilder sql = new StringBuilder("SELECT * FROM CELL_DEVICE_ACTIVE WHERE 1=1");
+            
+            //if(!string.IsNullOrEmpty(model.UnitId))
+            //{
+            //    sql.AppendFormat(" AND UNIT_ID LIKE '{0}%'", model.UnitId);
+            //}
+
+            if(!string.IsNullOrEmpty(model.IMEI))
+            {
+                sql.AppendFormat(" AND IMEI LIKE '{0}%'", model.IMEI);
+            }
+
+            if (!string.IsNullOrEmpty(model.UnitType))
+            {
+                sql.AppendFormat(" AND LOWER(OTHER) LIKE '%{0}%'", model.UnitType.ToLower());
+            }
+
+            if (model.TestMode.ToLower() != "all")
+            {
+                sql.AppendFormat(" AND TEST = '{0}'", model.TestMode);
+            }
+
+            if (!string.IsNullOrEmpty(model.SerialNumber))
+            {
+                sql.AppendFormat(" AND SERIAL LIKE '%{0}%'", model.SerialNumber);
+            }
+
+
+            List<CellDeviceModel> collection = new List<CellDeviceModel>();
+            try
+            {
+                var data = _provider.GetData(sql.ToString(), null);
+
+                if (data != null)
+                {
+                    foreach (DataRow row in data.Rows)
+                    {
+                        collection.Add(new CellDeviceModel(row));
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                LogError(e);
+            }
+            return collection;
+        }
     }
 }

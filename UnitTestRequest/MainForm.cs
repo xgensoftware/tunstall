@@ -22,7 +22,6 @@ namespace UnitTestRequest
     {
         #region Member Variables
         LogHelper _log = null;
-        
 
         enum TESTMODE
         {
@@ -213,6 +212,20 @@ namespace UnitTestRequest
 
             this.ActiveControl = txtUnit;
 
+        }
+
+        private void toolStripMenuItemSearch_Click(object sender, EventArgs e)
+        {
+            var search = new frmSearch(_log);
+            search.OnFormClosedEvent += _search_OnFormClosedEvent;
+            search.ShowDialog();
+        }
+
+        private void _search_OnFormClosedEvent(bool isCompleted)
+        {
+            txtUnit.Clear();
+            txtUnit.Focus();
+            LoadCellDeviceGrid();
         }
     }
 }
