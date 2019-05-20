@@ -46,7 +46,7 @@ namespace UnitTestRequest
         void LoadCellDeviceGrid()
         {
             grdDevices.AutoGenerateColumns = false;
-            var devices = HomeService.Instance.GetCellDevices();
+            var devices = CellDeviceService.Instance.GetCellDevices();
             grdDevices.DataSource = devices;
 
             LogMessage("Loading Cell devices from database");
@@ -115,7 +115,7 @@ namespace UnitTestRequest
         {
             if (!string.IsNullOrEmpty(unitId))
             {
-                var cellDevice = HomeService.Instance.GetCellDeviceByUnitId(unitId);
+                var cellDevice = CellDeviceService.Instance.GetCellDeviceByUnitId(unitId);
                 if (cellDevice != null)
                 {
                     //change the unit to the opposite of currnet status
@@ -154,7 +154,7 @@ namespace UnitTestRequest
 
                     if (isSuccess)
                     {
-                        HomeService.Instance.UpdateCellDeviceStatus(cellDevice.ID, mode == TESTMODE.ON ? true : false);
+                        CellDeviceService.Instance.UpdateCellDeviceStatus(cellDevice.ID, mode == TESTMODE.ON ? true : false);
                         LogMessage(string.Format("Set cell device {0} test status to {1}.", unitId, mode.ToString()));
                     }
                 }

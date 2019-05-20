@@ -8,6 +8,7 @@ namespace TunstallBL.Models
 {
     public class CellDeviceSearchModel
     {
+        
         public string UnitId { get; set; }
 
        public string IMEI { get; set; }

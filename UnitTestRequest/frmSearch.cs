@@ -21,7 +21,7 @@ namespace UnitTestRequest
         #region Member Variables
 
         LogHelper _log = null;
-
+        
         #endregion
 
         
@@ -48,10 +48,40 @@ namespace UnitTestRequest
             InitializeComponent();
 
             this.Load += FrmSearch_Load;
+            grdSearchResult.CellContentClick += GrdSearchResult_CellContentClick;
 
             _log = log;
 
            
+        }
+
+        private void GrdSearchResult_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+            var cellDevice = senderGrid.Rows[e.RowIndex].DataBoundItem as CellDeviceModel;
+            if(cellDevice != null)
+            {
+                var frmUpdatePhone = new frmUpdatePhone(cellDevice);
+                frmUpdatePhone.OnPhoneNumberUpdated += _frmUpdatePhone_OnPhoneNumberUpdated;
+                frmUpdatePhone.ShowDialog();
+            }
+        }
+
+        private void _frmUpdatePhone_OnPhoneNumberUpdated(bool isCompleted, CellDeviceModel model)
+        {
+           if(isCompleted)
+            {
+                MessageBox.Show(string.Format("Successfully updated phone number to {0} for unit {1} ", model.MDN, model.UNIT_ID));
+
+                // clear search
+                txtUnitId.Clear();
+                txtUnitType.Clear();
+                txtIMEI.Clear();
+                txtSerialNum.Clear();
+                txtUnitId.Focus();
+
+                grdSearchResult.DataSource = null;
+            }
         }
 
         private void FrmSearch_Load(object sender, EventArgs e)
@@ -78,7 +108,7 @@ namespace UnitTestRequest
             model.UnitType = txtUnitType.Text;
 
             model.TestMode = ((ListItem)cmbMode.SelectedItem).Value;
-            var result = HomeService.Instance.SearchCellDevice(model);
+            var result = CellDeviceService.Instance.SearchCellDevice(model);
 
             grdSearchResult.AutoGenerateColumns = false;
             grdSearchResult.DataSource = result;

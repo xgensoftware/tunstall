@@ -39,39 +39,38 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtSerialNum = new System.Windows.Forms.TextBox();
             this.grdSearchResult = new System.Windows.Forms.DataGridView();
-            this.UnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IMEI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Serial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TestMode = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtUnitType = new System.Windows.Forms.TextBox();
+            this.UnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IMEI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Serial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TestMode = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdSearchResult)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(435, 83);
+            this.label1.Location = new System.Drawing.Point(25, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Unit Id:";
-            this.label1.Visible = false;
             // 
             // txtUnitId
             // 
-            this.txtUnitId.Location = new System.Drawing.Point(482, 80);
+            this.txtUnitId.Location = new System.Drawing.Point(72, 9);
             this.txtUnitId.Name = "txtUnitId";
             this.txtUnitId.Size = new System.Drawing.Size(252, 20);
             this.txtUnitId.TabIndex = 1;
-            this.txtUnitId.Visible = false;
             // 
             // txtIMEI
             // 
-            this.txtIMEI.Location = new System.Drawing.Point(73, 36);
+            this.txtIMEI.Location = new System.Drawing.Point(72, 59);
             this.txtIMEI.Name = "txtIMEI";
             this.txtIMEI.Size = new System.Drawing.Size(252, 20);
             this.txtIMEI.TabIndex = 3;
@@ -79,7 +78,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 39);
+            this.label2.Location = new System.Drawing.Point(34, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 2;
@@ -88,7 +87,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 87);
+            this.label3.Location = new System.Drawing.Point(29, 110);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 4;
@@ -97,7 +96,7 @@
             // cmbMode
             // 
             this.cmbMode.FormattingEnabled = true;
-            this.cmbMode.Location = new System.Drawing.Point(73, 84);
+            this.cmbMode.Location = new System.Drawing.Point(72, 107);
             this.cmbMode.Name = "cmbMode";
             this.cmbMode.Size = new System.Drawing.Size(252, 21);
             this.cmbMode.TabIndex = 5;
@@ -105,7 +104,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 63);
+            this.label4.Location = new System.Drawing.Point(20, 86);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 13);
             this.label4.TabIndex = 6;
@@ -113,7 +112,7 @@
             // 
             // txtSerialNum
             // 
-            this.txtSerialNum.Location = new System.Drawing.Point(73, 60);
+            this.txtSerialNum.Location = new System.Drawing.Point(72, 83);
             this.txtSerialNum.Name = "txtSerialNum";
             this.txtSerialNum.Size = new System.Drawing.Size(252, 20);
             this.txtSerialNum.TabIndex = 7;
@@ -136,6 +135,7 @@
             this.grdSearchResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdSearchResult.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.UnitId,
+            this.MDN,
             this.UnitType,
             this.IMEI,
             this.Serial,
@@ -148,46 +148,13 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.grdSearchResult.DefaultCellStyle = dataGridViewCellStyle2;
-            this.grdSearchResult.Location = new System.Drawing.Point(14, 111);
+            this.grdSearchResult.Location = new System.Drawing.Point(14, 134);
+            this.grdSearchResult.MultiSelect = false;
             this.grdSearchResult.Name = "grdSearchResult";
             this.grdSearchResult.ReadOnly = true;
-            this.grdSearchResult.Size = new System.Drawing.Size(759, 397);
+            this.grdSearchResult.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdSearchResult.Size = new System.Drawing.Size(759, 374);
             this.grdSearchResult.TabIndex = 8;
-            // 
-            // UnitId
-            // 
-            this.UnitId.DataPropertyName = "UNIT_ID";
-            this.UnitId.HeaderText = "Unit";
-            this.UnitId.Name = "UnitId";
-            this.UnitId.ReadOnly = true;
-            // 
-            // UnitType
-            // 
-            this.UnitType.DataPropertyName = "OTHER";
-            this.UnitType.HeaderText = "Unit Type";
-            this.UnitType.Name = "UnitType";
-            this.UnitType.ReadOnly = true;
-            // 
-            // IMEI
-            // 
-            this.IMEI.DataPropertyName = "IMEI";
-            this.IMEI.HeaderText = "IMEI";
-            this.IMEI.Name = "IMEI";
-            this.IMEI.ReadOnly = true;
-            // 
-            // Serial
-            // 
-            this.Serial.DataPropertyName = "SERIALNO";
-            this.Serial.HeaderText = "Serial";
-            this.Serial.Name = "Serial";
-            this.Serial.ReadOnly = true;
-            // 
-            // TestMode
-            // 
-            this.TestMode.DataPropertyName = "TEST";
-            this.TestMode.HeaderText = "Test Status";
-            this.TestMode.Name = "TestMode";
-            this.TestMode.ReadOnly = true;
             // 
             // btnSearch
             // 
@@ -214,7 +181,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 15);
+            this.label5.Location = new System.Drawing.Point(10, 38);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 13);
             this.label5.TabIndex = 11;
@@ -222,10 +189,55 @@
             // 
             // txtUnitType
             // 
-            this.txtUnitType.Location = new System.Drawing.Point(73, 12);
+            this.txtUnitType.Location = new System.Drawing.Point(72, 35);
             this.txtUnitType.Name = "txtUnitType";
             this.txtUnitType.Size = new System.Drawing.Size(252, 20);
             this.txtUnitType.TabIndex = 12;
+            // 
+            // UnitId
+            // 
+            this.UnitId.DataPropertyName = "UNIT_ID";
+            this.UnitId.HeaderText = "Unit";
+            this.UnitId.Name = "UnitId";
+            this.UnitId.ReadOnly = true;
+            this.UnitId.Width = 125;
+            // 
+            // MDN
+            // 
+            this.MDN.DataPropertyName = "MDN";
+            this.MDN.HeaderText = "Unit Phone";
+            this.MDN.Name = "MDN";
+            this.MDN.ReadOnly = true;
+            this.MDN.Width = 125;
+            // 
+            // UnitType
+            // 
+            this.UnitType.DataPropertyName = "OTHER";
+            this.UnitType.HeaderText = "Unit Type";
+            this.UnitType.Name = "UnitType";
+            this.UnitType.ReadOnly = true;
+            // 
+            // IMEI
+            // 
+            this.IMEI.DataPropertyName = "IMEI";
+            this.IMEI.HeaderText = "IMEI";
+            this.IMEI.Name = "IMEI";
+            this.IMEI.ReadOnly = true;
+            this.IMEI.Width = 150;
+            // 
+            // Serial
+            // 
+            this.Serial.DataPropertyName = "SERIALNO";
+            this.Serial.HeaderText = "Serial";
+            this.Serial.Name = "Serial";
+            this.Serial.ReadOnly = true;
+            // 
+            // TestMode
+            // 
+            this.TestMode.DataPropertyName = "TEST";
+            this.TestMode.HeaderText = "Test Status";
+            this.TestMode.Name = "TestMode";
+            this.TestMode.ReadOnly = true;
             // 
             // frmSearch
             // 
@@ -265,14 +277,15 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtSerialNum;
         private System.Windows.Forms.DataGridView grdSearchResult;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UnitId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UnitType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IMEI;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Serial;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn TestMode;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtUnitType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MDN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IMEI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Serial;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn TestMode;
     }
 }
