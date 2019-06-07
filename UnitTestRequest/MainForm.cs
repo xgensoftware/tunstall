@@ -128,8 +128,16 @@ namespace UnitTestRequest
                                 
                         case false:
                             mode = TESTMODE.ON;
+                            var isExisting = HomeService.Instance.SearchExistingUnit(cellDevice);
+                            if (isExisting)
+                            {
+                                MessageBox.Show(string.Format("Unit {0} is an existing unit.", cellDevice.UNIT_ID.ToString()));
+                                return;
+                            }
                             break;
                     }
+
+                   
 
                     LogMessage(string.Format("Unit {0} : Test Mode: {1}", unitId, mode.ToString()));
 

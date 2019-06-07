@@ -12,11 +12,15 @@ namespace TunstallBL.Models
         {
             if(dr != null)
             {
-                RESIDENT_DEF = dr["RESIDENT_DEF"].Parse<long>();
-                LOCATION_REF= dr["LOCATION_REF"].Parse<long>();
-                FIRST_NAME = dr["FIRST_NAME"].ToString();
-                LAST_NAME = dr["LAST_NAME"].ToString();
-                PRIORITY = dr["PRIORITY"].Parse<int>();
+                try
+                {
+                    RESIDENT_DEF = dr["RESIDENT_DEF"].Parse<long>();
+                    LOCATION_REF = dr["LOCATION_REF"].Parse<long>();
+                    FIRST_NAME = dr["FIRST_NAME"].ToString();
+                    LAST_NAME = dr["LAST_NAME"].ToString();
+                    PRIORITY = dr["PRIORITY"].Parse<int>();
+                }
+                catch { }
              }
         }
 
@@ -40,18 +44,22 @@ namespace TunstallBL.Models
 
             if (dr != null)
             {
-                LOCATION_DEF = dr["LOCATION_DEF"].Parse<long>();
-                EQUIP_ID = dr["EQUIP_ID"].Parse<long>();
-                AUTHORITY_REF = dr["AUTHORITY_REF"].Parse<long>();
-                ADDRESS_STREET = dr["ADDRESS_STREET"].ToString();
-                ADDRESS_AREA = dr["ADDRESS_AREA"].ToString();
-                ADDRESS_TOWN = dr["ADDRESS_TOWN"].ToString();
-                ADDRESS_COUNTY = dr["ADDRESS_COUNTY"].ToString();
-                ADDRESS_POSTCODE = dr["ADDRESS_POSTCODE"].ToString();
-                OTHER_PHONE = dr["OTHER_PHONE"].ToString();
-                EQUIP_PHONE = dr["EQUIP_PHONE"].ToString();
-                EQUIP_MODEL_REF = dr["EQUIP_MODEL_REF"].Parse<long>();
-
+                try
+                {
+                    LOCATION_DEF = dr["LOCATION_DEF"].Parse<long>();
+                    EQUIP_ID = dr["EQUIP_ID"].Parse<long>();
+                    AUTHORITY_REF = dr["AUTHORITY_REF"].Parse<long>();
+                    ADDRESS_STREET = dr["ADDRESS_STREET"].ToString();
+                    ADDRESS_AREA = dr["ADDRESS_AREA"].ToString();
+                    ADDRESS_TOWN = dr["ADDRESS_TOWN"].ToString();
+                    ADDRESS_COUNTY = dr["ADDRESS_COUNTY"].ToString();
+                    ADDRESS_POSTCODE = dr["ADDRESS_POSTCODE"].ToString();
+                    OTHER_PHONE = dr["OTHER_PHONE"].ToString();
+                    EQUIP_PHONE = dr["EQUIP_PHONE"].ToString();
+                    EQUIP_MODEL_REF = dr["EQUIP_MODEL_REF"].Parse<long>();
+                }
+                catch { }
+                
                 var r = new ResidentModel(dr);
                 Residents.Add(r);
             }

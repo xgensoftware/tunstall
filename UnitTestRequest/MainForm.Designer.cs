@@ -35,16 +35,17 @@
             this.txtUnit = new System.Windows.Forms.TextBox();
             this.btnOffTest = new System.Windows.Forms.Button();
             this.grdDevices = new System.Windows.Forms.DataGridView();
-            this.UnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnitType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IMEI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Serial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TestMode = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemSearch = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemClose = new System.Windows.Forms.ToolStripMenuItem();
+            this.UnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IMEI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Serial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TestMode = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdDevices)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -104,6 +105,7 @@
             this.grdDevices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdDevices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.UnitId,
+            this.colPhone,
             this.UnitType,
             this.IMEI,
             this.Serial,
@@ -123,12 +125,57 @@
             this.grdDevices.Size = new System.Drawing.Size(703, 344);
             this.grdDevices.TabIndex = 4;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuFile});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(703, 24);
+            this.menuStrip1.TabIndex = 5;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // toolStripMenuFile
+            // 
+            this.toolStripMenuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemSearch,
+            this.toolStripSeparator1,
+            this.toolStripMenuItemClose});
+            this.toolStripMenuFile.Name = "toolStripMenuFile";
+            this.toolStripMenuFile.Size = new System.Drawing.Size(40, 20);
+            this.toolStripMenuFile.Text = "FILE";
+            // 
+            // toolStripMenuItemSearch
+            // 
+            this.toolStripMenuItemSearch.Name = "toolStripMenuItemSearch";
+            this.toolStripMenuItemSearch.Size = new System.Drawing.Size(109, 22);
+            this.toolStripMenuItemSearch.Text = "Search";
+            this.toolStripMenuItemSearch.Click += new System.EventHandler(this.toolStripMenuItemSearch_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(106, 6);
+            // 
+            // toolStripMenuItemClose
+            // 
+            this.toolStripMenuItemClose.Name = "toolStripMenuItemClose";
+            this.toolStripMenuItemClose.Size = new System.Drawing.Size(109, 22);
+            this.toolStripMenuItemClose.Text = "Close";
+            // 
             // UnitId
             // 
             this.UnitId.DataPropertyName = "UNIT_ID";
             this.UnitId.HeaderText = "Unit";
             this.UnitId.Name = "UnitId";
             this.UnitId.ReadOnly = true;
+            // 
+            // colPhone
+            // 
+            this.colPhone.DataPropertyName = "MDN";
+            this.colPhone.HeaderText = "Phone";
+            this.colPhone.Name = "colPhone";
+            this.colPhone.ReadOnly = true;
             // 
             // UnitType
             // 
@@ -157,44 +204,6 @@
             this.TestMode.HeaderText = "Test Status";
             this.TestMode.Name = "TestMode";
             this.TestMode.ReadOnly = true;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuFile});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(703, 24);
-            this.menuStrip1.TabIndex = 5;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // toolStripMenuFile
-            // 
-            this.toolStripMenuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemSearch,
-            this.toolStripSeparator1,
-            this.toolStripMenuItemClose});
-            this.toolStripMenuFile.Name = "toolStripMenuFile";
-            this.toolStripMenuFile.Size = new System.Drawing.Size(40, 20);
-            this.toolStripMenuFile.Text = "FILE";
-            // 
-            // toolStripMenuItemSearch
-            // 
-            this.toolStripMenuItemSearch.Name = "toolStripMenuItemSearch";
-            this.toolStripMenuItemSearch.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItemSearch.Text = "Search";
-            this.toolStripMenuItemSearch.Click += new System.EventHandler(this.toolStripMenuItemSearch_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // toolStripMenuItemClose
-            // 
-            this.toolStripMenuItemClose.Name = "toolStripMenuItemClose";
-            this.toolStripMenuItemClose.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItemClose.Text = "Close";
             // 
             // MainForm
             // 
@@ -225,15 +234,16 @@
         private System.Windows.Forms.TextBox txtUnit;
         private System.Windows.Forms.Button btnOffTest;
         private System.Windows.Forms.DataGridView grdDevices;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UnitId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UnitType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IMEI;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Serial;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn TestMode;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuFile;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSearch;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemClose;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPhone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IMEI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Serial;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn TestMode;
     }
 }

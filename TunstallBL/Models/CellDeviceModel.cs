@@ -8,6 +8,10 @@ namespace TunstallBL.Models
 {
     public class CellDeviceModel
     {
+        public CellDeviceModel()
+        {
+
+        }
         public CellDeviceModel(System.Data.DataRow dr)
         {
             if(dr != null)

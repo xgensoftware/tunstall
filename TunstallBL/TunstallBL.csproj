@@ -77,6 +77,7 @@
     <Compile Include="API\Mytrex\MytrexUnitEventRequest.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Helpers\AppConfigurationHelper.cs" />
+    <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Helpers\JWTHelper.cs" />
     <Compile Include="Helpers\LogHelper.cs" />
     <Compile Include="Models\AneltoSignalModel.cs" />
