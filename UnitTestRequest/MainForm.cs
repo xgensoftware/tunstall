@@ -151,6 +151,7 @@ namespace UnitTestRequest
                             isSuccess = SendToMytrex(mode, unitId, cellDevice.SERIALNO);
                             break;
 
+                        case "anelto lte":
                         case "anelto otg":
                             isSuccess = SendToAnelto(mode, unitId);
                             break;
