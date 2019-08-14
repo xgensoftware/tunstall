@@ -108,6 +108,11 @@ namespace TunstallBL.Services
         {
             StringBuilder sql = new StringBuilder("SELECT * FROM CELL_DEVICE_ACTIVE WHERE 1=1");
 
+            if(!string.IsNullOrEmpty(model.PhoneNumber))
+            {
+                sql.AppendFormat(" AND MDN = '{0}'", model.PhoneNumber);
+            }
+
             if (!string.IsNullOrEmpty(model.UnitId))
             {
                 sql.AppendFormat(" AND UNIT_ID = {0}", model.UnitId);
