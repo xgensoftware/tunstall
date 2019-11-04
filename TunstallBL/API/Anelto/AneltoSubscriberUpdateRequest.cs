@@ -58,4 +58,9 @@ namespace TunstallBL.API.Model
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string cghome { get; set; }
     }
+
+    public class AneltoSubscriberGetRequest
+    {
+        public string account { get; set; }
+    }
 }

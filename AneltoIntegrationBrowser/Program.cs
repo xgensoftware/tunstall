@@ -16,13 +16,77 @@ namespace AneltoIntegrationBrowser
 {
     class Program
     {
+        static LogHelper log = null;
+
+        static void ProcessPhoneNumber(EpecLocationModel home, string phoneNumber, string aneltoAPIUserName)
+        {
+            var model = new AneltoSubscriberUpdateRequest();
+            try
+            {
+                model.ani = AppConfigurationHelper.StripPhoneNumberField ? home.OTHER_PHONE.Remove(0, 1) : home.OTHER_PHONE;
+                var resident = home.Residents.OrderBy(r => r.PRIORITY).First();
+                model.firstname = resident.FIRST_NAME;
+                model.lastname = resident.LAST_NAME;
+                model.address = home.ADDRESS_STREET;
+                model.address1 = home.ADDRESS_AREA;
+                model.city = home.ADDRESS_TOWN;
+                model.state = home.ADDRESS_COUNTY;
+                model.zip = home.ADDRESS_POSTCODE;
+
+                AneltoAPI api = new AneltoAPI(aneltoAPIUserName, AppConfigurationHelper.AneltoAPIPassword);
+                var response = api.SubscriberCreateUpdate(model);
+                log.LogMessage(LogMessageType.INFO, string.Format("Sent to Anelto with resposne {0} for phone number {1}. Data: {2}", response, phoneNumber, model.ToJson()));
+            }
+            catch (Exception ex)
+            {
+                log.LogMessage(LogMessageType.ERROR, string.Format("Failed to send to Anelto API for phone {0}. DATA: {1}. ERROR: {2}", phoneNumber, model.ToJson(), ex.Message));
+            }
+
+            // get the latest signal from the event table for the phone number
+            string url = string.Empty;
+
+            try
+            {
+                var strip = AppConfigurationHelper.StripPhoneNumberField ? phoneNumber.Remove(0, 1) : phoneNumber;
+                url = EventService.Instance.GetUrlBy(strip);
+            }
+            catch (Exception ex)
+            {
+                log.LogMessage(LogMessageType.ERROR, string.Format("Failed to get URL from Event database. ERROR: {0}", ex.Message));
+            }
+
+            if (!string.IsNullOrEmpty(url))
+            {
+                log.LogMessage(LogMessageType.INFO, string.Format("Found url from event table for {0}", url));
+                try
+                {
+                    Process.Start("chrome.exe", url);
+                    log.LogMessage(LogMessageType.INFO, string.Format("Opening chrome browser for url {0}", url));
+                }
+                catch
+                {
+                    using (WebBrowser browser = new WebBrowser())
+                    {
+                        browser.Navigate(url, "_blank", null, null);
+                    }
+                }
+            }
+        }
+
         [STAThread]
         static void Main(string[] args)
         {
+            ///New Logic
+            ///1. Check Home for passed in phonenumber
+            ///2. Go to Anelto and run the Update/Create
+            /// a. if error = inventory not found, then we do Subscriber Get with ICCD from ?
+            /// b. use company from table for API User/Password 
+            /// c. then run Sub Update/Create
+            ///     
             //args = new string[] { "2158033100" };
             if (args.Count() > 0)
             {
-                var log = new LogHelper(AppConfigurationHelper.LogFile);
+                log = new LogHelper(AppConfigurationHelper.LogFile);
                 string phoneNumber = args[0];
                 
 
@@ -51,57 +115,48 @@ namespace AneltoIntegrationBrowser
                 else
                 {
                     log.LogMessage(LogMessageType.INFO, string.Format("Home found for {0}.", phoneNumber));
-                    var model = new AneltoSubscriberUpdateRequest();
-                    try
-                    {
-                        model.ani = AppConfigurationHelper.StripPhoneNumberField ? home.OTHER_PHONE.Remove(0, 1) : home.OTHER_PHONE;
-                        var resident = home.Residents.OrderBy(r => r.PRIORITY).First();
-                        model.firstname = resident.FIRST_NAME;
-                        model.lastname = resident.LAST_NAME;
-                        model.address = home.ADDRESS_STREET;
-                        model.address1 = home.ADDRESS_AREA;
-                        model.city = home.ADDRESS_TOWN;
-                        model.state = home.ADDRESS_COUNTY;
-                        model.zip = home.ADDRESS_POSTCODE;
+                    AneltoAPI api = null;
+                    string aneltoAPIUsername = string.Empty;
 
-                        AneltoAPI api = new AneltoAPI();
-                        var response = api.SubscriberCreateUpdate(model);
-                        log.LogMessage(LogMessageType.INFO, string.Format("Sent to Anelto with resposne {0} for phone number {1}. Data: {2}", response,phoneNumber, model.ToJson()));
-                    }
-                    catch (Exception ex)
+                    //TODO: need to check the Subscriber_Get for each username
+                    string[] userNames = AppConfigurationHelper.AneltoAPIUsername.Split('|');
+                    var cellDeviceSearch = new CellDeviceSearchModel();
+                    cellDeviceSearch.PhoneNumber = home.OTHER_PHONE.Remove(0, 1);
+                    var cellDeviceResult = CellDeviceService.Instance.SearchCellDevice(cellDeviceSearch);
+                    if(cellDeviceResult.Count > 0)
                     {
-                        log.LogMessage(LogMessageType.ERROR, string.Format("Failed to send to Anelto API for phone {0}. DATA: {1}. ERROR: {2}", phoneNumber,model.ToJson(), ex.Message));
-                    }
-
-                    // get the latest signal from the event table for the phone number
-                    string url = string.Empty;
-
-                    try
-                    {
-                        var strip = AppConfigurationHelper.StripPhoneNumberField ? phoneNumber.Remove(0, 1) : phoneNumber;
-                        url = EventService.Instance.GetUrlBy(strip);
-                    }
-                    catch(Exception ex)
-                    {
-                        log.LogMessage(LogMessageType.ERROR, string.Format("Failed to get URL from Event database. ERROR: {0}", ex.Message));
-                    }
-
-                    if (!string.IsNullOrEmpty(url))
-                    {
-                        log.LogMessage(LogMessageType.INFO, string.Format("Found url from event table for {0}",url));
-                        try
+                        var iccd = cellDeviceResult.FirstOrDefault().ICCID;
+                        foreach (string userName in userNames)
                         {
-                            Process.Start("chrome.exe", url);
-                            log.LogMessage(LogMessageType.INFO, string.Format("Opening chrome browser for url {0}", url));
-                        }
-                        catch
-                        {
-                            using (WebBrowser browser = new WebBrowser())
+                            try
                             {
-                                browser.Navigate(url, "_blank", null, null);
+                                api = new AneltoAPI(userName, AppConfigurationHelper.AneltoAPIPassword);
+
+                                var subscriberGetRequest = new AneltoSubscriberGetRequest();
+                                subscriberGetRequest.account = iccd;
+                                bool subscriberExists = api.SubscriberExists(subscriberGetRequest);
+
+                                if(subscriberExists)
+                                {
+                                    aneltoAPIUsername = userName;
+                                }
                             }
+                            catch
+                            { }
+
+                        }
+
+                        if(!string.IsNullOrEmpty(aneltoAPIUsername))
+                        {
+                            ProcessPhoneNumber(home, phoneNumber, aneltoAPIUsername);
+                        }
+                        else
+                        {
+                            string msg = string.Format("No account found for phone {0} in ANelto API", phoneNumber);
+                            MessageBox.Show(msg);
                         }
                     }
+                    
                 }
             }
             else

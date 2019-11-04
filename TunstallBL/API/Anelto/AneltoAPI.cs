@@ -14,6 +14,9 @@ namespace TunstallBL.API
     {
         #region Member Variables
         RestClient _client = null;
+
+        string _apiUsername = string.Empty;
+        string _apiPassword = string.Empty;
         #endregion
 
         #region Private Methods
@@ -21,15 +24,33 @@ namespace TunstallBL.API
         #endregion
 
         #region Constructor
-        public AneltoAPI()
+        public AneltoAPI(string userName, string password)
         {
+            _apiUsername = userName;
+            _apiPassword = password;
         }
         #endregion
+
+        public bool SubscriberExists(AneltoSubscriberGetRequest model)
+        {
+            bool subscriberExists = false;
+
+            var client = new RestClient(AppConfigurationHelper.AneltoURL);
+            client.Authenticator = new HttpBasicAuthenticator(_apiUsername, _apiPassword);
+
+            var request = FormRequest(Method.POST, "/subscriber/get");
+            request.AddJsonBody(model);
+            var response = client.Execute(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                subscriberExists = true;
+
+            return subscriberExists;
+        }
 
         public string SubscriberCreateUpdate(AneltoSubscriberUpdateRequest model)
         {
             var client = new RestClient(AppConfigurationHelper.AneltoURL);
-            client.Authenticator = new HttpBasicAuthenticator(AppConfigurationHelper.AneltoAPIUsername, AppConfigurationHelper.AneltoAPIPassword);
+            client.Authenticator = new HttpBasicAuthenticator(_apiUsername, _apiPassword);
 
             var request = FormRequest(Method.POST, "/subscriber/create");
             request.AddJsonBody(model);
@@ -47,7 +68,7 @@ namespace TunstallBL.API
         public string SubscriberCCOverride(AneltoSubscriberOverrideRequest model)
         {
             var client = new RestClient(AppConfigurationHelper.AneltoURL);
-            client.Authenticator = new HttpBasicAuthenticator(AppConfigurationHelper.AneltoAPIUsername, AppConfigurationHelper.AneltoAPIPassword);
+            client.Authenticator = new HttpBasicAuthenticator(_apiUsername, _apiPassword);
 
             var request = FormRequest(Method.POST, "/subscriber/ccoverride");
 
