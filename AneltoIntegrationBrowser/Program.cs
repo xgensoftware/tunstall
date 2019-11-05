@@ -84,6 +84,7 @@ namespace AneltoIntegrationBrowser
             /// c. then run Sub Update/Create
             ///     
             //args = new string[] { "2158033100" };
+            //args = new string[] { "2156962172" };
             if (args.Count() > 0)
             {
                 log = new LogHelper(AppConfigurationHelper.LogFile);
@@ -121,28 +122,38 @@ namespace AneltoIntegrationBrowser
                     //TODO: need to check the Subscriber_Get for each username
                     string[] userNames = AppConfigurationHelper.AneltoAPIUsername.Split('|');
                     var cellDeviceSearch = new CellDeviceSearchModel();
-                    cellDeviceSearch.PhoneNumber = home.OTHER_PHONE.Remove(0, 1);
+                    cellDeviceSearch.PhoneNumber = phoneNumber;
+                    cellDeviceSearch.TestMode = "All";
                     var cellDeviceResult = CellDeviceService.Instance.SearchCellDevice(cellDeviceSearch);
                     if(cellDeviceResult.Count > 0)
                     {
-                        var iccd = cellDeviceResult.FirstOrDefault().ICCID;
+                        var accountId = cellDeviceResult.FirstOrDefault().UNIT_ID.ToString();
                         foreach (string userName in userNames)
                         {
+                            log.LogMessage(LogMessageType.INFO, string.Format("Running Anelto search for user {0}.", userName));
                             try
                             {
                                 api = new AneltoAPI(userName, AppConfigurationHelper.AneltoAPIPassword);
 
                                 var subscriberGetRequest = new AneltoSubscriberGetRequest();
-                                subscriberGetRequest.account = iccd;
+                                subscriberGetRequest.account = accountId;
                                 bool subscriberExists = api.SubscriberExists(subscriberGetRequest);
 
                                 if(subscriberExists)
                                 {
                                     aneltoAPIUsername = userName;
+                                    log.LogMessage(LogMessageType.INFO, string.Format("Found in Anelto for subscriber ICCD {0}, username .", accountId, userName));
                                 }
+                                else
+                                {
+                                    log.LogMessage(LogMessageType.INFO, string.Format("No subscriber found in Anelto for account {0}, username {1}.", accountId, userName));
+                                }
+
                             }
-                            catch
-                            { }
+                            catch(Exception ex)
+                            {
+                                log.LogMessage(LogMessageType.ERROR, string.Format("Error running Subscriber_Get for Username {0}. ERROR: {1}", userName,ex.Message));
+                            }
 
                         }
 

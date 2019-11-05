@@ -143,6 +143,7 @@ namespace TunstallBL.Services
             try
             {
                 var data = _provider.GetData(sql.ToString(), null);
+                LogInfo(string.Format("Running: {0}", sql.ToString()));
 
                 if (data != null)
                 {
@@ -150,6 +151,8 @@ namespace TunstallBL.Services
                     {
                         collection.Add(new CellDeviceModel(row));
                     }
+
+                    LogInfo(string.Format("Cell device search result model {0}", collection.ToJson()));
                 }
             }
             catch (Exception e)
