@@ -14,7 +14,7 @@ namespace TunstallServiceProcessor
     {
         static void Main(string[] args)
         {
-            EventService.Instance.ProcessEventQueue();
+            EventService.Instance.ProcessEventQueue().Wait();
         }
     }
 }

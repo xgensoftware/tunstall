@@ -31,37 +31,36 @@ namespace TunstallBL.Services
 
         #region Public Methods
 
-        public bool ProcessEventQueue()
+        public async Task<bool> ProcessEventQueue()
         {
             var isDemoMode = ConfigurationManager.AppSettings["IsDemoMode"].Parse<bool>();
             var logFile = ConfigurationManager.AppSettings["LogFile"];
             var logger = new LogHelper(logFile);
+            List<EventModel> eventModels = null;
             bool processEvents = true;
 
             logger.LogMessage(LogMessageType.INFO, "****** Processing events ******");
 
-            var events = _db.Events.Where(e => e.IsProcessed == false).AsParallel().ToList();
-
-            var eventModels = events
-                                .Select(e => new EventModel()
-                                {
-                                    Id = e.Id,
-                                    AccountCode = e.AccountCode,
-                                    CallerId = e.CallerId,
-                                    EventCode = e.ServiceId == 2 ? e.EventCode : e.EventZone,
-                                    Qualifier = e.Qualifier,
-                                    Zone = e.Zone,
-                                    LineId = e.LineId,
-                                    UnitModel = e.UnitModel,
-                                    ServiceId = e.ServiceId
-                                })
-                                .ToList();
-
-
             try
             {
+                var events = await _db.Events.Where(e => e.IsProcessed == false).ToListAsync();
+                
+                eventModels = events.Select(e => new EventModel()
+                                    {
+                                        Id = e.Id,
+                                        AccountCode = e.AccountCode,
+                                        CallerId = e.CallerId,
+                                        EventCode = e.ServiceId == 2 ? e.EventCode : e.EventZone,
+                                        Qualifier = e.Qualifier,
+                                        Zone = e.Zone,
+                                        LineId = e.LineId,
+                                        UnitModel = e.UnitModel,
+                                        ServiceId = e.ServiceId
+                                    })
+                                    .ToList();
+
                 events.ForEach(e => e.IsProcessed = true);
-                _db.SaveChanges();
+                await _db.SaveChangesAsync();
             }
             catch (Exception ex)
             {
