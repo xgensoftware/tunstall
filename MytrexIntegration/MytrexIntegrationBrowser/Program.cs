@@ -20,7 +20,9 @@ namespace MytrexIntegrationBrowser
             var dealerKey = ConfigurationManager.AppSettings["DealerKey"].ToString();
             var username = ConfigurationManager.AppSettings["Username"].ToString();
             var url = ConfigurationManager.AppSettings["MytrexUrl"].ToString();
-            //args = new string[] { "3852819134" };
+            var log = new LogHelper(AppConfigurationHelper.LogFile);
+
+            //args = new string[] { "7472759063" };
             if(args != null)
             {
                 if(args.Count() > 0)
@@ -36,9 +38,11 @@ namespace MytrexIntegrationBrowser
                     try
                     {
                         Process.Start("chrome.exe", url);
+                        log.LogMessage(LogMessageType.INFO, $"Opening URL: {url}");
                     }
-                    catch {
+                    catch(Exception e) {
 
+                        log.LogMessage(LogMessageType.ERROR, $"Failed to open URL {url}. ERROR: {e.Message}");
                         using (WebBrowser browser = new WebBrowser())
                         {
                             browser.Navigate(url, "_blank", null, null);
